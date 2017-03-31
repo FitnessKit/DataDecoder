@@ -13,3 +13,17 @@ Swift Data Decoder.  Easily Decode Data values
   let nib = decoder.decodeNibble()
   let novalue = decoder.decodeNibble() //This should come back 0 as there is no more data  left
   ~~~
+
+## Data Decoders ##
+
+* Nibble
+* UInt8/Int8
+* UInt16/Int16
+* UInt24/Int23
+* UInt32/Int32
+* UInt48
+* UInt64/Int64
+* IEEE-11073 16-bit SFLOAT
+* IEEE-11073 32-bit FLOAT
+* IP Address to String Value
+* MAC Address to String Value

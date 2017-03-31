@@ -27,8 +27,8 @@ import Foundation
 
 
 public struct DataDecoder {
-    private var decode: Data
-    private var index: Int = 0
+    fileprivate var decode: Data
+    fileprivate var index: Int = 0
 
     public init(_ value: Data) {
         self.index = 0
@@ -37,7 +37,6 @@ public struct DataDecoder {
 
     public mutating func decodeNibble() -> Nibble {
         let value = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        print(value)
         return Nibble(value)
     }
 
@@ -79,3 +78,20 @@ public struct DataDecoder {
     }
     
 }
+
+///MARK: - ANT Decodes
+public extension DataDecoder {
+
+    public mutating func decodeANTToggleByte() -> ANTToggleByte {
+        let value = decode.scanValue(index: &index, type: UInt8.self) ?? 0
+        return ANTToggleByte(value)
+    }
+
+}
+
+///MARK: - BLE Decodes
+public extension DataDecoder {
+
+    
+}
+

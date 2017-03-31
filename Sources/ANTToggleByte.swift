@@ -26,7 +26,7 @@ import Foundation
 
 
 /// ANT Toggle Byte
-public struct ToggleByte {
+public struct ANTToggleByte {
     public var pageNumber: UInt8
     public var hasToggled: Bool
 

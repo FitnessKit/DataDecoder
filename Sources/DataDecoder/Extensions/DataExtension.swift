@@ -24,6 +24,7 @@
 
 import Foundation
 
+//MARK: - Values
 extension Data {
 
     func scanValue<T>(start: Int, length: Int) -> T {
@@ -44,8 +45,25 @@ extension Data {
         return self.subdata(in: scanIdx..<toSize).withUnsafeBytes { $0.pointee }
     }
 
-
     func to<T>(type: T.Type) -> T {
         return self.withUnsafeBytes { $0.pointee }
     }
+}
+
+//MARK: - Strings
+extension Data {
+
+    var safeStringValue: String? {
+
+        var maybeString: String?
+
+        if self[self.count - 1] == 0x00 {
+            maybeString = String(data: self, encoding: .utf8)
+        } else {
+            maybeString = String(data: self, encoding: .ascii)
+        }
+
+        return maybeString
+    }
+
 }

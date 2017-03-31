@@ -3,7 +3,7 @@ import XCTest
 
 class DataDecoderTests: XCTestCase {
 
-    func testExample() {
+    func testSimpleDecodes() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 
@@ -40,10 +40,64 @@ class DataDecoderTests: XCTestCase {
 
     }
 
+    func testUInt24()  {
+        let ipData: Data = Data([ 0xFF, 0xFF, 0xFF])
+
+        var decoder = DataDecoder(ipData)
+
+        let value = decoder.decodeUInt24()
+
+        if value != 0xFFFFFF {
+            XCTFail()
+        }
+    }
+
+    func testUInt48()  {
+        let ipData: Data = Data([ 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF])
+
+        var decoder = DataDecoder(ipData)
+
+        let value = decoder.decodeUInt48()
+
+        if value != 0xFFFFFFFFFFFF {
+            XCTFail()
+        }
+    }
+
+
+    func testIPAddress()  {
+        let ipData: Data = Data([ 0xAD, 0xA5, 0xEE, 0xB2])
+
+        var decoder = DataDecoder(ipData)
+
+        let ipaddress = decoder.decodeIPAddress()
+
+        if ipaddress != "173.165.238.178" {
+            XCTFail()
+        }
+    }
+
+    func testMACADdress() {
+        let ipData: Data = Data([ 0x00, 0x50, 0xC2, 0x34, 0xF7, 0x11])
+
+        var decoder = DataDecoder(ipData)
+
+        let macaddress = decoder.decodeMACAddress()
+
+        if macaddress != "00:50:C2:34:F7:11" {
+            XCTFail()
+        }
+
+    }
+
 
     static var allTests : [(String, (DataDecoderTests) -> () throws -> Void)] {
         return [
-            ("testExample", testExample),
+            ("testSimpleDecodes", testSimpleDecodes),
+            ("testUInt24", testUInt24),
+            ("testUInt48", testUInt48),
+            ("testIPAddress", testIPAddress),
+            ("testMACADdress", testMACADdress),
         ]
     }
 }

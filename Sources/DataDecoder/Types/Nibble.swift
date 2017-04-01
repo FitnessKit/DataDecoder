@@ -55,7 +55,7 @@ extension Nibble: Equatable {
 ///MARK: - UInt8 Extension
 public extension UInt8 {
 
-    var nibbleValue: Nibble {
+    public var nibbleValue: Nibble {
         return Nibble(self)
     }
 }

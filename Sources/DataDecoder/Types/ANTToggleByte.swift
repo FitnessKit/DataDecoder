@@ -28,13 +28,12 @@ import Foundation
 /// ANT Toggle Byte
 public struct ANTToggleByte {
     public var pageNumber: UInt8
-    public var hasToggled: Bool
+    public var toggle: Bool
 
     public init(_ value: UInt8) {
         self.pageNumber = (value & 0x7F)
-        self.hasToggled = ((value >> 7) & 0x7F).boolValue
+        self.toggle = ((value >> 7) & 0x7F).boolValue
     }
-    
 }
 
 

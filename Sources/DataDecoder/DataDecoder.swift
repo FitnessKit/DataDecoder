@@ -50,21 +50,26 @@ public struct DataDecoder {
     fileprivate var decode: Data
     fileprivate var index: Int = 0
 
-    fileprivate lazy var kFirstSFloatReservedValue: Int16 = {
-        return DecoderSFloatValues.positiveInfinity.rawValue
-    }()
-
-    fileprivate lazy var kFirstFloatResrvedValue: Int32 = {
-        return Int32(DecoderFloatValues.positiveInfinity.rawValue)
-    }()
-
     fileprivate lazy var kReservedFloatValues: [Double] = {
-        return [Double.infinity, Double.nan,Double.nan,Double.nan, -Double.infinity]
+        return [Double.infinity, Double.nan, Double.nan, Double.nan, -Double.infinity]
     }()
 
-    public init(_ value: Data) {
-        self.index = 0
+    public init(_ value: Data, startIndex: Int = 0) {
+        self.index = startIndex
         self.decode = value
+    }
+
+    /// Decodes Raw data from data Stream
+    ///
+    /// - Parameter length: Length of Data to pull out of stream
+    /// - Returns: Data Instance
+    public mutating func decodeData(length: Int) -> Data {
+        var value: [UInt8] = [UInt8]()
+        for _ in index..<(index + length) {
+            value.append(decode.scanValue(index: &index, type: UInt8.self) ?? 0)
+        }
+
+        return Data(value)
     }
 
     /// Decodes Nibble from the data stream
@@ -160,8 +165,8 @@ public struct DataDecoder {
         let val5 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
 
         let value: UInt = UInt( (UInt(val5) << 40) | (UInt(val4) << 32) |
-                                (UInt(val3) << 24) | (UInt(val2) << 16) |
-                                (UInt(val1) <<  8) | UInt(val0))
+            (UInt(val3) << 24) | (UInt(val2) << 16) |
+            (UInt(val1) <<  8) | UInt(val0))
         return value
     }
 
@@ -181,7 +186,7 @@ public struct DataDecoder {
 }
 
 
-//MARK: - Other Decodes 
+//MARK: - Other Decodes
 public extension DataDecoder {
 
     /// Decodes IP Address from the data stream
@@ -243,7 +248,7 @@ public extension DataDecoder {
 
 }
 
-//MARK: - BLE Decodes
+//MARK: - IEEE Decodes
 public extension DataDecoder {
 
     /// Decodes IEEE-11073 16-bit SFLOAT from the data stream
@@ -256,8 +261,8 @@ public extension DataDecoder {
 
         var returnResult: Float = 0
 
-        if mantissa >= kFirstSFloatReservedValue && mantissa <= DecoderSFloatValues.negativeInfinity.rawValue {
-            returnResult = Float(kReservedFloatValues[mantissa - kFirstSFloatReservedValue])
+        if mantissa >= DecoderSFloatValues.positiveInfinity.rawValue && mantissa <= DecoderSFloatValues.negativeInfinity.rawValue {
+            returnResult = Float(kReservedFloatValues[mantissa - DecoderSFloatValues.positiveInfinity.rawValue])
         } else {
 
             if mantissa >= 0x0800 {
@@ -268,7 +273,7 @@ public extension DataDecoder {
             returnResult = Float(mantissa) * Float(magnitude)
 
         }
-        
+
         return returnResult
     }
 
@@ -282,22 +287,19 @@ public extension DataDecoder {
 
         var returnResult: Float = 0
 
-        if mantissa >= kFirstFloatResrvedValue && mantissa <= Int32(DecoderFloatValues.negativeInfinity.rawValue) {
-            returnResult = Float(kReservedFloatValues[mantissa - kFirstFloatResrvedValue])
+        if mantissa >= Int32(DecoderFloatValues.positiveInfinity.rawValue) && mantissa <= Int32(DecoderFloatValues.negativeInfinity.rawValue) {
+            returnResult = Float(kReservedFloatValues[mantissa - Int32(DecoderFloatValues.positiveInfinity.rawValue)])
         } else {
 
             if mantissa >= 0x800000 {
                 mantissa = -((0xFFFFFF + 1) - mantissa)
             }
-
+            
             let magnitude = pow(10.0, Double(exponent))
             returnResult = Float(mantissa) * Float(magnitude)
-
+            
         }
-
+        
         return returnResult
     }
-
-    
 }
-

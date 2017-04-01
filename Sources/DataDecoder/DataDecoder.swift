@@ -214,7 +214,7 @@ public extension DataDecoder {
     ///
     /// - Parameter fromLittleEndian: If MAC is encoded as Little Endian
     /// - Returns: String Representation of the MAC Address
-    public mutating func decodeMACAddress(fromLittleEndian: Bool = false) -> String {
+    public mutating func decodeMACAddress(fromLittleEndian: Bool = false) -> MACAddress {
         let val0 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
         let val1 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
         let val2 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
@@ -230,7 +230,7 @@ public extension DataDecoder {
             retVal = String(format: "%02X:%02X:%02X:%02X:%02X:%02X", val0, val1, val2, val3, val4, val5)
         }
 
-        return retVal
+        return MACAddress(string: retVal)
     }
 
 }

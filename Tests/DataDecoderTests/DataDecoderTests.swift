@@ -7,7 +7,7 @@ class DataDecoderTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 
-        let sensorData: Data = Data([ 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
+        let sensorData: Data = Data([0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
 
         let DEADBEEF: UInt32 = 3735928559
 
@@ -41,7 +41,7 @@ class DataDecoderTests: XCTestCase {
     }
 
     func testUInt24()  {
-        let ipData: Data = Data([ 0xFF, 0xFF, 0xFF])
+        let ipData: Data = Data([0xFF, 0xFF, 0xFF])
 
         var decoder = DataDecoder(ipData)
 
@@ -53,7 +53,7 @@ class DataDecoderTests: XCTestCase {
     }
 
     func testUInt48()  {
-        let ipData: Data = Data([ 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF])
+        let ipData: Data = Data([0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF])
 
         var decoder = DataDecoder(ipData)
 
@@ -77,14 +77,14 @@ class DataDecoderTests: XCTestCase {
         }
     }
 
-    func testMACADdress() {
+    func testMACAddress() {
         let ipData: Data = Data([ 0x00, 0x50, 0xC2, 0x34, 0xF7, 0x11])
 
         var decoder = DataDecoder(ipData)
 
         let macaddress = decoder.decodeMACAddress()
 
-        if macaddress != "00:50:C2:34:F7:11" {
+        if macaddress.stringValue != "00:50:C2:34:F7:11" {
             XCTFail()
         }
 

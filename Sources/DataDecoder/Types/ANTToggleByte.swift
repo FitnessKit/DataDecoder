@@ -30,14 +30,27 @@ public struct ANTToggleByte {
     public var pageNumber: UInt8
     public var toggle: Bool
 
+    public var uint8Value: UInt8 {
+        var value: UInt8 = pageNumber
+        value |= UInt8(toggle == true ? 1 : 0) << 7
+
+        return UInt8(value)
+    }
+
     public init(_ value: UInt8) {
         self.pageNumber = (value & 0x7F)
         self.toggle = ((value >> 7) & 0x7F).boolValue
+    }
+
+    public init(pageNumber: UInt8, toggled: Bool) {
+        self.pageNumber = pageNumber
+        self.toggle = toggled
     }
 }
 
 
 internal extension UInt8 {
+
     var boolValue: Bool {
         switch self {
         case 0x01:

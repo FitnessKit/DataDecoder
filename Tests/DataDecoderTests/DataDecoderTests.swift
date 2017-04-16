@@ -97,7 +97,7 @@ class DataDecoderTests: XCTestCase {
             ("testUInt24", testUInt24),
             ("testUInt48", testUInt48),
             ("testIPAddress", testIPAddress),
-            ("testMACADdress", testMACADdress),
+            ("testMACADdress", testMACAddress),
         ]
     }
 }

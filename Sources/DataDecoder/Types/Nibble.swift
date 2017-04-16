@@ -51,6 +51,13 @@ extension Nibble: Equatable {
     }
 }
 
+extension Nibble: Hashable {
+
+    public var hashValue: Int {
+        return uint8Value.hashValue
+    }
+}
+
 
 ///MARK: - UInt8 Extension
 public extension UInt8 {

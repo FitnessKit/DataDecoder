@@ -262,7 +262,8 @@ public extension DataDecoder {
         var returnResult: Float = 0
 
         if mantissa >= DecoderSFloatValues.positiveInfinity.rawValue && mantissa <= DecoderSFloatValues.negativeInfinity.rawValue {
-            returnResult = Float(kReservedFloatValues[mantissa - DecoderSFloatValues.positiveInfinity.rawValue])
+            let index: Int = Int(mantissa - DecoderSFloatValues.positiveInfinity.rawValue)
+            returnResult = Float(kReservedFloatValues[index])
         } else {
 
             if mantissa >= 0x0800 {
@@ -288,7 +289,8 @@ public extension DataDecoder {
         var returnResult: Float = 0
 
         if mantissa >= Int32(DecoderFloatValues.positiveInfinity.rawValue) && mantissa <= Int32(DecoderFloatValues.negativeInfinity.rawValue) {
-            returnResult = Float(kReservedFloatValues[mantissa - Int32(DecoderFloatValues.positiveInfinity.rawValue)])
+            let index: Int = Int(mantissa - Int32(DecoderFloatValues.positiveInfinity.rawValue))
+            returnResult = Float(kReservedFloatValues[index])
         } else {
 
             if mantissa >= 0x800000 {

@@ -1,6 +1,20 @@
 # DataDecoder
 Swift Data Decoder.  Easily Decode Data values
 
+[![Version](https://img.shields.io/cocoapods/v/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
+[![License](https://img.shields.io/cocoapods/l/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
+[![Platform](https://img.shields.io/cocoapods/p/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
+
+## Installation
+
+DataDecoder is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "DataDecoder"
+```
+
+
 ## How to Use ##
 
 ~~~
@@ -27,3 +41,11 @@ Swift Data Decoder.  Easily Decode Data values
 * IEEE-11073 32-bit FLOAT
 * IP Address to String Value
 * MAC Address to String Value
+
+## Author
+
+Kevin A. Hoogheem, kevin@hoogheem.net
+
+## License
+
+DataDecoder is available under the MIT license. See the LICENSE file for more info.

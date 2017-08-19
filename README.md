@@ -15,6 +15,13 @@ it, simply add the following line to your Podfile:
 pod "DataDecoder"
 ```
 
+Swift Package Manager:
+```swift
+    dependencies: [
+        .Package(url: "https://github.com/FitnessKit/DataDecoder", majorVersion: 0)
+    ]
+```
+
 
 ## How to Use ##
 

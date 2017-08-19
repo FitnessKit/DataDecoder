@@ -255,9 +255,9 @@ public extension DataDecoder {
     ///
     /// - Returns: Float value
     public mutating func decodeSFloatValue() -> Float {
-        let tmpValue = decode.scanValue(index: &index, type: UInt16.self) ?? 0
+        let tmpValue = decode.scanValue(index: &index, type: Int16.self) ?? 0
         var mantissa = Int16(tmpValue & 0x0FFF)
-        let exponent = UInt8(tmpValue >> 12)
+        let exponent = Int8(tmpValue >> 12)
 
         var returnResult: Float = 0
 
@@ -282,9 +282,9 @@ public extension DataDecoder {
     ///
     /// - Returns: Float value
     public mutating func decodeFloatValue() -> Float {
-        let tmpValue = decode.scanValue(index: &index, type: UInt32.self) ?? 0
+        let tmpValue = decode.scanValue(index: &index, type: Int32.self) ?? 0
         var mantissa = Int32(tmpValue & 0x00FFFFFF)
-        let exponent = UInt8(tmpValue >> 24)
+        let exponent = Int8(tmpValue >> 24)
 
         var returnResult: Float = 0
 

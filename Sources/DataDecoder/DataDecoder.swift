@@ -131,9 +131,14 @@ public struct DataDecoder {
         var value: Int = 0
 
         if val2 & 0x80 == 1 {
-            value = Int( Int(0xFF) << 24) | (Int(val2) << 16) | (Int(val1) <<  8) | Int(val0)
+
+            value |= Int(val0)
+            value |= Int(val1) <<  8
+            value |= Int(val2) << 16
+            value |= Int(0xFF) << 24
+
         } else {
-            value = Int( (Int(val2) << 16) | (Int(val1) <<  8) | Int(val0))
+            value = Int( (Int(val2) << 16) | (Int(val1) <<  8) | Int(val0) )
         }
 
         return value
@@ -164,9 +169,15 @@ public struct DataDecoder {
         let val4 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
         let val5 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
 
-        let value: UInt = UInt( (UInt(val5) << 40) | (UInt(val4) << 32) |
-            (UInt(val3) << 24) | (UInt(val2) << 16) |
-            (UInt(val1) <<  8) | UInt(val0))
+        var value: UInt = 0
+
+        value |= UInt(val0)
+        value |= UInt(val1) <<  8
+        value |= UInt(val2) << 16
+        value |= UInt(val3) << 24
+        value |= UInt(val4) << 32
+        value |= UInt(val5) << 40
+
         return value
     }
 

@@ -6,7 +6,7 @@ branches:
 
 xcode_project: DataDecoder.xcodeproj
 xcode_scheme: DataDecoderTests
-osx_image: xcode8.3
+osx_image: xcode9.0
 xcode_sdk: iphonesimulator10.0
 
 script:

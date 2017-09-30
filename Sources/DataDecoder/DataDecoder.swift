@@ -25,7 +25,7 @@
 
 import Foundation
 
-fileprivate enum DecoderSFloatValues: Int16 {
+private enum DecoderSFloatValues: Int16 {
     case positiveInfinity       = 0x07FE
     case nan                    = 0x07FF
     case res                    = 0x0800
@@ -33,7 +33,7 @@ fileprivate enum DecoderSFloatValues: Int16 {
     case negativeInfinity       = 0x0802
 }
 
-fileprivate enum DecoderFloatValues: UInt32 {
+private enum DecoderFloatValues: UInt32 {
     case positiveInfinity       = 0x007FFFFE
     case nan                    = 0x007FFFFF
     case res                    = 0x00800000
@@ -47,10 +47,10 @@ fileprivate enum DecoderFloatValues: UInt32 {
 /// Provides easy methods for Decoding values out of a Data Stream
 ///
 public struct DataDecoder {
-    fileprivate var decode: Data
-    fileprivate var index: Int = 0
+    private var decode: Data
+    private var index: Int = 0
 
-    fileprivate lazy var kReservedFloatValues: [Double] = {
+    private lazy var kReservedFloatValues: [Double] = {
         return [Double.infinity, Double.nan, Double.nan, Double.nan, -Double.infinity]
     }()
 

@@ -27,7 +27,7 @@ import Foundation
 
 public struct MACAddress {
 
-    fileprivate(set) public var stringValue: String
+    private(set) public var stringValue: String
 
     public var dataValue: Data {
         let substring = stringValue.replacingOccurrences(of: ":", with: "")

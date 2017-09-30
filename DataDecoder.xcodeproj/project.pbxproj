@@ -7,53 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04431A281E9044250037ADF2 /* MACAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04431A271E9044250037ADF2 /* MACAddress.swift */; };
-		OBJ_26 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* DataDecoder.swift */; };
-		OBJ_27 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataExtension.swift */; };
-		OBJ_28 /* ANTToggleByte.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* ANTToggleByte.swift */; };
-		OBJ_29 /* Nibble.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Nibble.swift */; };
-		OBJ_36 /* DataDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* DataDecoderTests.swift */; };
-		OBJ_38 /* DataDecoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* DataDecoder.framework */; };
+		OBJ_24 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_30 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* DataDecoder.swift */; };
+		OBJ_31 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataExtension.swift */; };
+		OBJ_32 /* ANTToggleByte.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* ANTToggleByte.swift */; };
+		OBJ_33 /* MACAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MACAddress.swift */; };
+		OBJ_34 /* Nibble.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Nibble.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		048F58861E8EDA6F009C06A9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = OBJ_1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = OBJ_21;
-			remoteInfo = DataDecoder;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		04431A271E9044250037ADF2 /* MACAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MACAddress.swift; sourceTree = "<group>"; };
-		044AEE4E1F0FC3DE0083DF94 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		04F305201EBF938B00F05EB5 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		04F305221EBF93E400F05EB5 /* DataDecoder.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DataDecoder.podspec; sourceTree = "<group>"; };
+		045F97551F8029B5006DB4B7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		045F97561F802A25006DB4B7 /* DataDecoder.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DataDecoder.podspec; sourceTree = "<group>"; };
+		"DataDecoder::DataDecoder::Product" /* DataDecoder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DataDecoder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		OBJ_13 /* ANTToggleByte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANTToggleByte.swift; sourceTree = "<group>"; };
-		OBJ_14 /* Nibble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nibble.swift; sourceTree = "<group>"; };
-		OBJ_17 /* DataDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoderTests.swift; sourceTree = "<group>"; };
-		OBJ_19 /* DataDecoder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataDecoder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_20 /* DataDecoderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = DataDecoderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_14 /* MACAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MACAddress.swift; sourceTree = "<group>"; };
+		OBJ_15 /* Nibble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nibble.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_30 /* Frameworks */ = {
+		OBJ_35 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		OBJ_37 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				OBJ_38 /* DataDecoder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,34 +50,23 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_13 /* ANTToggleByte.swift */,
-				OBJ_14 /* Nibble.swift */,
-				04431A271E9044250037ADF2 /* MACAddress.swift */,
+				OBJ_14 /* MACAddress.swift */,
+				OBJ_15 /* Nibble.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
 		};
-		OBJ_15 /* Tests */ = {
+		OBJ_16 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_16 /* DataDecoderTests */,
 			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		OBJ_16 /* DataDecoderTests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_17 /* DataDecoderTests.swift */,
-			);
-			name = DataDecoderTests;
-			path = Tests/DataDecoderTests;
+			name = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_18 /* Products */ = {
+		OBJ_17 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_19 /* DataDecoder.framework */,
-				OBJ_20 /* DataDecoderTests.xctest */,
+				"DataDecoder::DataDecoder::Product" /* DataDecoder.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -107,13 +74,12 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				044AEE4E1F0FC3DE0083DF94 /* README.md */,
-				04F305201EBF938B00F05EB5 /* LICENSE */,
-				04F305221EBF93E400F05EB5 /* DataDecoder.podspec */,
+				045F97561F802A25006DB4B7 /* DataDecoder.podspec */,
 				OBJ_6 /* Package.swift */,
+				045F97551F8029B5006DB4B7 /* README.md */,
 				OBJ_7 /* Sources */,
-				OBJ_15 /* Tests */,
-				OBJ_18 /* Products */,
+				OBJ_16 /* Tests */,
+				OBJ_17 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,8 +88,8 @@
 			children = (
 				OBJ_8 /* DataDecoder */,
 			);
-			path = Sources;
-			sourceTree = "<group>";
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_8 /* DataDecoder */ = {
 			isa = PBXGroup;
@@ -139,12 +105,12 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		OBJ_21 /* DataDecoder */ = {
+		"DataDecoder::DataDecoder" /* DataDecoder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_22 /* Build configuration list for PBXNativeTarget "DataDecoder" */;
+			buildConfigurationList = OBJ_26 /* Build configuration list for PBXNativeTarget "DataDecoder" */;
 			buildPhases = (
-				OBJ_25 /* Sources */,
-				OBJ_30 /* Frameworks */,
+				OBJ_29 /* Sources */,
+				OBJ_35 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,25 +118,22 @@
 			);
 			name = DataDecoder;
 			productName = DataDecoder;
-			productReference = OBJ_19 /* DataDecoder.framework */;
+			productReference = "DataDecoder::DataDecoder::Product" /* DataDecoder.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		OBJ_31 /* DataDecoderTests */ = {
+		"DataDecoder::SwiftPMPackageDescription" /* DataDecoderPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_32 /* Build configuration list for PBXNativeTarget "DataDecoderTests" */;
+			buildConfigurationList = OBJ_20 /* Build configuration list for PBXNativeTarget "DataDecoderPackageDescription" */;
 			buildPhases = (
-				OBJ_35 /* Sources */,
-				OBJ_37 /* Frameworks */,
+				OBJ_23 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_39 /* PBXTargetDependency */,
 			);
-			name = DataDecoderTests;
-			productName = DataDecoderTests;
-			productReference = OBJ_20 /* DataDecoderTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = DataDecoderPackageDescription;
+			productName = DataDecoderPackageDescription;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -178,15 +141,7 @@
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
-				TargetAttributes = {
-					OBJ_21 = {
-						LastSwiftMigration = 0900;
-					};
-					OBJ_31 = {
-						LastSwiftMigration = 0900;
-					};
-				};
+				LastUpgradeCheck = 9999;
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "DataDecoder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -196,49 +151,59 @@
 				en,
 			);
 			mainGroup = OBJ_5;
-			productRefGroup = OBJ_18 /* Products */;
+			productRefGroup = OBJ_17 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_21 /* DataDecoder */,
-				OBJ_31 /* DataDecoderTests */,
+				"DataDecoder::SwiftPMPackageDescription" /* DataDecoderPackageDescription */,
+				"DataDecoder::DataDecoder" /* DataDecoder */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_25 /* Sources */ = {
+		OBJ_23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_26 /* DataDecoder.swift in Sources */,
-				OBJ_27 /* DataExtension.swift in Sources */,
-				OBJ_28 /* ANTToggleByte.swift in Sources */,
-				OBJ_29 /* Nibble.swift in Sources */,
-				04431A281E9044250037ADF2 /* MACAddress.swift in Sources */,
+				OBJ_24 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_35 /* Sources */ = {
+		OBJ_29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_36 /* DataDecoderTests.swift in Sources */,
+				OBJ_30 /* DataDecoder.swift in Sources */,
+				OBJ_31 /* DataExtension.swift in Sources */,
+				OBJ_32 /* ANTToggleByte.swift in Sources */,
+				OBJ_33 /* MACAddress.swift in Sources */,
+				OBJ_34 /* Nibble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		OBJ_39 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = OBJ_21 /* DataDecoder */;
-			targetProxy = 048F58861E8EDA6F009C06A9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		OBJ_23 /* Debug */ = {
+		OBJ_21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -254,13 +219,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = DataDecoder;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = DataDecoder;
 			};
 			name = Debug;
 		};
-		OBJ_24 /* Release */ = {
+		OBJ_28 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -276,7 +241,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = DataDecoder;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGET_NAME = DataDecoder;
 			};
@@ -285,36 +250,13 @@
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = YES;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
@@ -323,80 +265,19 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
 		};
-		OBJ_33 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = DataDecoder.xcodeproj/DataDecoderTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = DataDecoderTests;
-			};
-			name = Debug;
-		};
-		OBJ_34 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = DataDecoder.xcodeproj/DataDecoderTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
-				TARGET_NAME = DataDecoderTests;
-			};
-			name = Release;
-		};
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -404,7 +285,6 @@
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -421,20 +301,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_22 /* Build configuration list for PBXNativeTarget "DataDecoder" */ = {
+		OBJ_20 /* Build configuration list for PBXNativeTarget "DataDecoderPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_23 /* Debug */,
-				OBJ_24 /* Release */,
+				OBJ_21 /* Debug */,
+				OBJ_22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_32 /* Build configuration list for PBXNativeTarget "DataDecoderTests" */ = {
+		OBJ_26 /* Build configuration list for PBXNativeTarget "DataDecoder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_33 /* Debug */,
-				OBJ_34 /* Release */,
+				OBJ_27 /* Debug */,
+				OBJ_28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -17,12 +17,19 @@ pod "DataDecoder"
 ```
 
 Swift Package Manager:
+
+Swift3
 ```swift
     dependencies: [
-        .Package(url: "https://github.com/FitnessKit/DataDecoder", majorVersion: 4)
+        .Package(url: "https://github.com/FitnessKit/DataDecoder", majorVersion: 0)
     ]
 ```
-
+Swift4
+```swift
+    dependencies: [
+        .package(url: "https://github.com/FitnessKit/DataDecoder", from: "4.0.0"),
+    ]
+```
 
 ## How to Use ##
 

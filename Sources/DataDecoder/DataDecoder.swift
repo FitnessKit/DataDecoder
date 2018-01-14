@@ -268,7 +268,11 @@ public extension DataDecoder {
     public mutating func decodeSFloatValue() -> Float {
         let tmpValue = decode.scanValue(index: &index, type: Int16.self) ?? 0
         var mantissa = Int16(tmpValue & 0x0FFF)
-        let exponent = Int8(tmpValue >> 12)
+        var exponent = Int8(tmpValue >> 12)
+
+        if exponent >= 0x0008 {
+            exponent = -((0x000F + 1) - exponent)
+        }
 
         var returnResult: Float = 0
 
@@ -277,7 +281,7 @@ public extension DataDecoder {
             returnResult = Float(kReservedFloatValues[index])
         } else {
 
-            if mantissa >= 0x0800 {
+            if mantissa > 0x0800 {
                 mantissa = -((0x0FFF + 1) - mantissa)
             }
 

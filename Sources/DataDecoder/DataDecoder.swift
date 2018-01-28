@@ -48,11 +48,16 @@ private enum DecoderFloatValues: UInt32 {
 ///
 public struct DataDecoder {
     private var decode: Data
-    private var index: Int = 0
 
     private lazy var kReservedFloatValues: [Double] = {
         return [Double.infinity, Double.nan, Double.nan, Double.nan, -Double.infinity]
     }()
+
+
+    /// Current Index
+    ///
+    /// The index into the data the decoder is at
+    private(set) public var index: Int = 0
 
     public init(_ value: Data, startIndex: Int = 0) {
         self.index = startIndex

@@ -27,7 +27,7 @@ Swift3
 Swift4
 ```swift
     dependencies: [
-        .package(url: "https://github.com/FitnessKit/DataDecoder", from: "4.0.0"),
+        .package(url: "https://github.com/FitnessKit/DataDecoder", from: "4.0.3"),
     ]
 ```
 

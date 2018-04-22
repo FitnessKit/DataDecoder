@@ -41,7 +41,7 @@ Swift4
   let weight = decoder.decodeUInt16()
   let deadbeef = decoder.decodeUInt32()
   let nib = decoder.decodeNibble()
-  let novalue = decoder.decodeNibble() //This should come back 0 as there is no more data  left
+  let novalue = decoder.decodeNibble() //This should come back 0 as there is no more data left
   ~~~
 
 ## Data Decoders ##
@@ -60,7 +60,7 @@ Swift4
 
 ## Author
 
-Kevin A. Hoogheem, kevin@hoogheem.net
+Kevin A. Hoogheem
 
 ## License
 

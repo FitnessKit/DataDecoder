@@ -60,8 +60,8 @@ Swift4
 
 ## Author
 
-Kevin A. Hoogheem
+This package is developed and maintained by Kevin A. Hoogheem
 
 ## License
 
-DataDecoder is available under the MIT license. See the LICENSE file for more info.
+DataDecoder is available under the [MIT license](http://opensource.org/licenses/MIT)

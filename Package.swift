@@ -11,7 +11,14 @@ let package = Package(
     targets: [
         .target(
             name: "DataDecoder"
-        )
+        ),
+        .testTarget(
+            name: "DataDecoderTests",
+            dependencies: [
+                "DataDecoder"
+            ]
+        ),
+
 	],
     swiftLanguageVersions: [3, 4]
 )

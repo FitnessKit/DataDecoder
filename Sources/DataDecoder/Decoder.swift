@@ -1,8 +1,8 @@
 //
-//  DataDecoder.swift
+//  Decoder.swift
 //  DataDecoder
 //
-//  Created by Kevin Hoogheem on 3/31/17.
+//  Created by Kevin Hoogheem on 6/23/18.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,57 +22,37 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
 import Foundation
 
-internal enum DecoderSFloatValues: Int16 {
-    case positiveInfinity       = 0x07FE
-    case nan                    = 0x07FF
-    case res                    = 0x0800
-    case reservedvalue          = 0x0801
-    case negativeInfinity       = 0x0802
-}
-
-internal enum DecoderFloatValues: UInt32 {
-    case positiveInfinity       = 0x007FFFFE
-    case nan                    = 0x007FFFFF
-    case res                    = 0x00800000
-    case reservedvalue          = 0x00800001
-    case negativeInfinity       = 0x00800002
-}
-
-
-/// Data Decoder
+/// Decoder
 ///
 /// Provides easy methods for Decoding values out of a Data Stream
-///
-@available(*, deprecated, message: "Use Decoder")
-public struct DataDecoder {
-    private var decode: Data
-
+public struct Decoder {
     private lazy var kReservedFloatValues: [Double] = {
         return [Double.infinity, Double.nan, Double.nan, Double.nan, -Double.infinity]
     }()
-
 
     /// Current Index
     ///
     /// The index into the data the decoder is at
     private(set) public var index: Int = 0
 
-    public init(_ value: Data, startIndex: Int = 0) {
+    public init(startIndex: Int = 0) {
         self.index = startIndex
-        self.decode = value
     }
+
+}
+
+public extension Decoder {
 
     /// Decodes Raw data from data Stream
     ///
     /// - Parameter length: Length of Data to pull out of stream
     /// - Returns: Data Instance
-    public mutating func decodeData(length: Int) -> Data {
+    public mutating func decodeData(_ data: Data, length: Int) -> Data {
         var value: [UInt8] = [UInt8]()
         for _ in index..<(index + length) {
-            value.append(decode.scanValue(index: &index, type: UInt8.self) ?? 0)
+            value.append(data.scanValue(index: &index, type: UInt8.self) ?? 0)
         }
 
         return Data(value)
@@ -81,46 +61,46 @@ public struct DataDecoder {
     /// Decodes Nibble from the data stream
     ///
     /// - Returns: Nibble Instance
-    public mutating func decodeNibble() -> Nibble {
-        let value = decode.scanValue(index: &index, type: UInt8.self) ?? 0
+    public mutating func decodeNibble(_ data: Data) -> Nibble {
+        let value = data.scanValue(index: &index, type: UInt8.self) ?? 0
         return Nibble(value)
     }
 
     /// Decodes Int8 from the data stream
     ///
     /// - Returns: Int8 value
-    public mutating func decodeInt8() -> Int8 {
-        return decode.scanValue(index: &index, type: Int8.self) ?? 0
+    public mutating func decodeInt8(_ data: Data) -> Int8 {
+        return data.scanValue(index: &index, type: Int8.self) ?? 0
     }
 
     /// Decodes UInt8 from the data stream
     ///
     /// - Returns: UInt8 value
-    public mutating func decodeUInt8() -> UInt8 {
-        return decode.scanValue(index: &index, type: UInt8.self) ?? 0
+    public mutating func decodeUInt8(_ data: Data) -> UInt8 {
+        return data.scanValue(index: &index, type: UInt8.self) ?? 0
     }
 
     /// Decodes Int16 from the data stream
     ///
     /// - Returns: Int16 value
-    public mutating func decodeInt16() -> Int16 {
-        return decode.scanValue(index: &index, type: Int16.self) ?? 0
+    public mutating func decodeInt16(_ data: Data) -> Int16 {
+        return data.scanValue(index: &index, type: Int16.self) ?? 0
     }
 
     /// Deocdes UInt16 from the data stream
     ///
     /// - Returns: UInt16 value
-    public mutating func decodeUInt16() -> UInt16 {
-        return decode.scanValue(index: &index, type: UInt16.self) ?? 0
+    public mutating func decodeUInt16(_ data: Data) -> UInt16 {
+        return data.scanValue(index: &index, type: UInt16.self) ?? 0
     }
 
     /// Decodes UInt24 from the data stream
     ///
     /// - Returns: Int value
-    public mutating func decodeUInt24() -> Int {
-        let val0 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val1 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val2 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
+    public mutating func decodeUInt24(_ data: Data) -> Int {
+        let val0 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val1 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val2 = data.scanValue(index: &index, type: UInt8.self) ?? 0
 
         let value: Int = Int( (Int(val2) << 16) | (Int(val1) <<  8) | Int(val0))
         return Int(value)
@@ -129,10 +109,10 @@ public struct DataDecoder {
     /// Decodes Int24 from the data stream
     ///
     /// - Returns: Int value
-    public mutating func decodeInt24() -> Int {
-        let val0 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val1 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val2 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
+    public mutating func decodeInt24(_ data: Data) -> Int {
+        let val0 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val1 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val2 = data.scanValue(index: &index, type: UInt8.self) ?? 0
 
         var value: Int = 0
 
@@ -153,27 +133,27 @@ public struct DataDecoder {
     /// Decodes Int32 from the data stream
     ///
     /// - Returns: Int32 value
-    public mutating func decodeInt32() -> Int32 {
-        return decode.scanValue(index: &index, type: Int32.self) ?? 0
+    public mutating func decodeInt32(_ data: Data) -> Int32 {
+        return data.scanValue(index: &index, type: Int32.self) ?? 0
     }
 
     /// Decodes UInt32 from the data stream
     ///
     /// - Returns: UInt32 value
-    public mutating func decodeUInt32() -> UInt32 {
-        return decode.scanValue(index: &index, type: UInt32.self) ?? 0
+    public mutating func decodeUInt32(_ data: Data) -> UInt32 {
+        return data.scanValue(index: &index, type: UInt32.self) ?? 0
     }
 
     /// Decodes UInt48 from the data stream
     ///
     /// - Returns: UInt value
-    public mutating func decodeUInt48() -> UInt {
-        let val0 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val1 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val2 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val3 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val4 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val5 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
+    public mutating func decodeUInt48(_ data: Data) -> UInt {
+        let val0 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val1 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val2 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val3 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val4 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val5 = data.scanValue(index: &index, type: UInt8.self) ?? 0
 
         var value: UInt = 0
 
@@ -190,31 +170,30 @@ public struct DataDecoder {
     /// Deocdes Int64 from the data stream
     ///
     /// - Returns: Int64 value
-    public mutating func decodeInt64() -> Int64 {
-        return decode.scanValue(index: &index, type: Int64.self) ?? 0
+    public mutating func decodeInt64(_ data: Data) -> Int64 {
+        return data.scanValue(index: &index, type: Int64.self) ?? 0
     }
 
     /// Decodes UInt64 from the data stream
     ///
     /// - Returns: UInt64 value
-    public mutating func decodeUInt64() -> UInt64 {
-        return decode.scanValue(index: &index, type: UInt64.self) ?? 0
+    public mutating func decodeUInt64(_ data: Data) -> UInt64 {
+        return data.scanValue(index: &index, type: UInt64.self) ?? 0
     }
 }
 
-
 //MARK: - Other Decodes
-public extension DataDecoder {
+public extension Decoder {
 
     /// Decodes IP Address from the data stream
     ///
     /// - Parameter fromLittleEndian: If IP Address is encoded as Little Endian
     /// - Returns: String Representation of the IP Address
-    public mutating func decodeIPAddress(fromLittleEndian: Bool = false) -> String {
-        let val0 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val1 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val2 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val3 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
+    public mutating func decodeIPAddress(_ data: Data, fromLittleEndian: Bool = false) -> String {
+        let val0 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val1 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val2 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val3 = data.scanValue(index: &index, type: UInt8.self) ?? 0
 
         var retVal = "0.0.0.0"
 
@@ -231,13 +210,13 @@ public extension DataDecoder {
     ///
     /// - Parameter fromLittleEndian: If MAC is encoded as Little Endian
     /// - Returns: String Representation of the MAC Address
-    public mutating func decodeMACAddress(fromLittleEndian: Bool = false) -> MACAddress {
-        let val0 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val1 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val2 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val3 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val4 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
-        let val5 = decode.scanValue(index: &index, type: UInt8.self) ?? 0
+    public mutating func decodeMACAddress(_ data: Data, fromLittleEndian: Bool = false) -> MACAddress {
+        let val0 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val1 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val2 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val3 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val4 = data.scanValue(index: &index, type: UInt8.self) ?? 0
+        let val5 = data.scanValue(index: &index, type: UInt8.self) ?? 0
 
         var retVal = "00:00:00:00:00:00"
 
@@ -253,26 +232,26 @@ public extension DataDecoder {
 }
 
 //MARK: - ANT Decodes
-public extension DataDecoder {
+public extension Decoder {
 
     /// Decodes ANT Toggle Byte from the data stream
     ///
     /// - Returns: ANTToggleByte Instance
-    public mutating func decodeANTToggleByte() -> ANTToggleByte {
-        let value = decode.scanValue(index: &index, type: UInt8.self) ?? 0
+    public mutating func decodeANTToggleByte(_ data: Data) -> ANTToggleByte {
+        let value = data.scanValue(index: &index, type: UInt8.self) ?? 0
         return ANTToggleByte(value)
     }
 
 }
 
 //MARK: - IEEE Decodes
-public extension DataDecoder {
+public extension Decoder {
 
     /// Decodes IEEE-11073 16-bit SFLOAT from the data stream
     ///
     /// - Returns: Float value
-    public mutating func decodeSFloatValue() -> Float {
-        let tmpValue = decode.scanValue(index: &index, type: Int16.self) ?? 0
+    public mutating func decodeSFloatValue(_ data: Data) -> Float {
+        let tmpValue = data.scanValue(index: &index, type: Int16.self) ?? 0
         var mantissa = Int16(tmpValue & 0x0FFF)
         var exponent = Int8(tmpValue >> 12)
 
@@ -302,8 +281,8 @@ public extension DataDecoder {
     /// Decodes IEEE-11073 32-bit FLOAT from the data stream
     ///
     /// - Returns: Float value
-    public mutating func decodeFloatValue() -> Float {
-        let tmpValue = decode.scanValue(index: &index, type: Int32.self) ?? 0
+    public mutating func decodeFloatValue(_ data: Data) -> Float {
+        let tmpValue = data.scanValue(index: &index, type: Int32.self) ?? 0
         var mantissa = Int32(tmpValue & 0x00FFFFFF)
         let exponent = Int8(tmpValue >> 24)
 
@@ -317,12 +296,12 @@ public extension DataDecoder {
             if mantissa >= 0x800000 {
                 mantissa = -((0xFFFFFF + 1) - mantissa)
             }
-            
+
             let magnitude = pow(10.0, Double(exponent))
             returnResult = Float(mantissa) * Float(magnitude)
-            
+
         }
-        
+
         return returnResult
     }
 }

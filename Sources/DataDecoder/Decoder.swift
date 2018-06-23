@@ -27,7 +27,7 @@ import Foundation
 /// Decoder
 ///
 /// Provides easy methods for Decoding values out of a Data Stream
-public struct Decoder {
+public struct DecodeData {
     private lazy var kReservedFloatValues: [Double] = {
         return [Double.infinity, Double.nan, Double.nan, Double.nan, -Double.infinity]
     }()
@@ -43,7 +43,7 @@ public struct Decoder {
 
 }
 
-public extension Decoder {
+public extension DecodeData {
 
     /// Decodes Raw data from data Stream
     ///
@@ -183,7 +183,7 @@ public extension Decoder {
 }
 
 //MARK: - Other Decodes
-public extension Decoder {
+public extension DecodeData {
 
     /// Decodes IP Address from the data stream
     ///
@@ -232,7 +232,7 @@ public extension Decoder {
 }
 
 //MARK: - ANT Decodes
-public extension Decoder {
+public extension DecodeData {
 
     /// Decodes ANT Toggle Byte from the data stream
     ///
@@ -245,7 +245,7 @@ public extension Decoder {
 }
 
 //MARK: - IEEE Decodes
-public extension Decoder {
+public extension DecodeData {
 
     /// Decodes IEEE-11073 16-bit SFLOAT from the data stream
     ///

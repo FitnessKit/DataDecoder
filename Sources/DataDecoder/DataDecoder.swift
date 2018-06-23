@@ -46,7 +46,7 @@ internal enum DecoderFloatValues: UInt32 {
 ///
 /// Provides easy methods for Decoding values out of a Data Stream
 ///
-@available(*, deprecated, message: "Use Decoder")
+@available(*, deprecated, message: "Use DecodeData")
 public struct DataDecoder {
     private var decode: Data
 

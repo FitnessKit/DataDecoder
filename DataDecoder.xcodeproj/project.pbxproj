@@ -52,6 +52,7 @@
 /* Begin PBXFileReference section */
 		045CB44C20DE976B000210F2 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		045CB45020DE9BCF000210F2 /* DataDecoder.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DataDecoder.podspec; sourceTree = "<group>"; };
+		045CB45720DE9EA2000210F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		"DataDecoder::DataDecoder::Product" /* DataDecoder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataDecoder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"DataDecoder::DataDecoderTests::Product" /* DataDecoderTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = DataDecoderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
@@ -126,16 +127,16 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				045CB45020DE9BCF000210F2 /* DataDecoder.podspec */,
+				045CB45720DE9EA2000210F2 /* README.md */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_16 /* Tests */,
 				OBJ_19 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -223,7 +224,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_19 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

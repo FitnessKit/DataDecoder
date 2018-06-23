@@ -200,11 +200,6 @@ public struct DataDecoder {
     public mutating func decodeUInt64() -> UInt64 {
         return decode.scanValue(index: &index, type: UInt64.self) ?? 0
     }
-}
-
-
-//MARK: - Other Decodes
-public extension DataDecoder {
 
     /// Decodes IP Address from the data stream
     ///
@@ -250,10 +245,7 @@ public extension DataDecoder {
         return MACAddress(string: retVal)
     }
 
-}
-
 //MARK: - ANT Decodes
-public extension DataDecoder {
 
     /// Decodes ANT Toggle Byte from the data stream
     ///
@@ -263,10 +255,7 @@ public extension DataDecoder {
         return ANTToggleByte(value)
     }
 
-}
-
 //MARK: - IEEE Decodes
-public extension DataDecoder {
 
     /// Decodes IEEE-11073 16-bit SFLOAT from the data stream
     ///

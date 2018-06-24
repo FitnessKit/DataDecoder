@@ -4,6 +4,7 @@ branches:
  only:
  - master
 
+sudo: required
 xcode_project: DataDecoder.xcodeproj
 xcode_scheme: DataDecoderTests
 os: osx
@@ -11,4 +12,5 @@ osx_image: xcode9.0
 xcode_sdk: macosx10.13
 
 script:
-- xcodebuild clean build test -project DataDecoder.xcodeproj -scheme DataDecoderTests -destination arch=x86_64
+  - swift build
+  - swift test

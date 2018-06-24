@@ -27,7 +27,7 @@ Swift3
 Swift4
 ```swift
     dependencies: [
-        .package(url: "https://github.com/FitnessKit/DataDecoder", from: "4.1.0"),
+        .package(url: "https://github.com/FitnessKit/DataDecoder", from: "4.1.1"),
     ]
 ```
 
@@ -42,7 +42,7 @@ Swift4
   let deadbeef = decoder.decodeUInt32(sensorData)
   let nib = decoder.decodeNibble(sensorData)
   let novalue = decoder.decodeNibble(sensorData) //This should come back 0 as there is no more data left
-  ~~~
+~~~
 
 ## Data Decoders ##
 

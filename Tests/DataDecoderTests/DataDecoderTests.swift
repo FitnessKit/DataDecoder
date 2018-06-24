@@ -23,7 +23,7 @@ class DataDecoderTests: XCTestCase {
             // Put the code you want to measure the time of here.
             let sensorData: Data = Data([0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
 
-            var tester = Decoder()
+            var tester = DecodeData()
 
             for _ in sensorData {
                 let _ = tester.decodeInt8(sensorData)
@@ -77,7 +77,7 @@ class DataDecoderTests: XCTestCase {
 
         let DEADBEEF: UInt32 = 3735928559
 
-        var decoder = Decoder()
+        var decoder = DecodeData()
         let height = decoder.decodeUInt8(sensorData)
         let weight = decoder.decodeUInt16(sensorData)
         let beef = decoder.decodeUInt32(sensorData)
@@ -122,7 +122,7 @@ class DataDecoderTests: XCTestCase {
     func testUInt24New()  {
         let ipData: Data = Data([0xFF, 0xFF, 0xFF])
 
-        var decoder = Decoder()
+        var decoder = DecodeData()
 
         let value = decoder.decodeUInt24(ipData)
 
@@ -147,7 +147,7 @@ class DataDecoderTests: XCTestCase {
     func testUInt48New()  {
         let ipData: Data = Data([0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF])
 
-        var decoder = Decoder()
+        var decoder = DecodeData()
 
         let value = decoder.decodeUInt48(ipData)
 
@@ -172,7 +172,7 @@ class DataDecoderTests: XCTestCase {
     func testIPAddressNew()  {
         let ipData: Data = Data([ 0xAD, 0xA5, 0xEE, 0xB2])
 
-        var decoder = Decoder()
+        var decoder = DecodeData()
 
         let ipaddress = decoder.decodeIPAddress(ipData)
 
@@ -198,7 +198,7 @@ class DataDecoderTests: XCTestCase {
     func testMACAddressNew() {
         let ipData: Data = Data([ 0x00, 0x50, 0xC2, 0x34, 0xF7, 0x11])
 
-        var decoder = Decoder()
+        var decoder = DecodeData()
 
         let macaddress = decoder.decodeMACAddress(ipData)
 

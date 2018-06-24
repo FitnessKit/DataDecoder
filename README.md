@@ -6,6 +6,7 @@ Swift Data Decoder.  Easily Decode Data values
 [![Version](https://img.shields.io/cocoapods/v/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
 [![License](https://img.shields.io/cocoapods/l/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
 [![Platform](https://img.shields.io/cocoapods/p/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
+[![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/fitnesskit/datadecoder)](http://clayallsopp.github.io/readme-score?url=https://github.com/fitnesskit/datadecoder)
 
 ## Installation
 

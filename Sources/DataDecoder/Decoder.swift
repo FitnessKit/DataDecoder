@@ -50,7 +50,20 @@ public extension DecodeData {
     /// - Parameter length: Length of Data to pull out of stream
     /// - Returns: Data Instance
     public mutating func decodeData(_ data: Data, length: Int) -> Data {
+        return decodeDataIfPresent(data, length: length) ?? Data()
+    }
+
+    /// Decodes Raw data from data Stream only if Present
+    ///
+    /// - Parameter length: Length of Data to pull out of stream
+    /// - Returns: Data Instance
+    public mutating func decodeDataIfPresent(_ data: Data, length: Int) -> Data? {
         var value: [UInt8] = [UInt8]()
+
+        if index + length > data.count {
+            return nil
+        }
+        
         for _ in index..<(index + length) {
             value.append(data.scanValue(index: &index, type: UInt8.self) ?? 0)
         }
@@ -62,36 +75,77 @@ public extension DecodeData {
     ///
     /// - Returns: Nibble Instance
     public mutating func decodeNibble(_ data: Data) -> Nibble {
-        let value = data.scanValue(index: &index, type: UInt8.self) ?? 0
-        return Nibble(value)
+        let value = decodeNibbleIfPresent(data) ?? Nibble(0)
+        return value
+    }
+
+    /// Decodes Nibble from the data stream only if present
+    ///
+    /// - Returns: Nibble value
+    public mutating func decodeNibbleIfPresent(_ data: Data) -> Nibble? {
+        let value = data.scanValue(index: &index, type: UInt8.self)
+
+        if let value = value  {
+            return Nibble(value)
+        }
+
+        return nil
     }
 
     /// Decodes Int8 from the data stream
     ///
     /// - Returns: Int8 value
     public mutating func decodeInt8(_ data: Data) -> Int8 {
-        return data.scanValue(index: &index, type: Int8.self) ?? 0
+        return decodeInt8IfPresent(data) ?? 0
+    }
+
+    /// Decodes Int8 from the data stream only if present
+    ///
+    /// - Returns: UInt8 value
+    public mutating func decodeInt8IfPresent(_ data: Data) -> Int8? {
+        return data.scanValue(index: &index, type: Int8.self)
     }
 
     /// Decodes UInt8 from the data stream
     ///
     /// - Returns: UInt8 value
     public mutating func decodeUInt8(_ data: Data) -> UInt8 {
-        return data.scanValue(index: &index, type: UInt8.self) ?? 0
+        return decodeUInt8IfPresent(data) ?? 0
+    }
+
+    /// Decodes UInt8 from the data stream only if present
+    ///
+    /// - Returns: UInt8 value
+    public mutating func decodeUInt8IfPresent(_ data: Data) -> UInt8? {
+        return data.scanValue(index: &index, type: UInt8.self)
     }
 
     /// Decodes Int16 from the data stream
     ///
     /// - Returns: Int16 value
     public mutating func decodeInt16(_ data: Data) -> Int16 {
-        return data.scanValue(index: &index, type: Int16.self) ?? 0
+        return decodeInt16IfPresent(data) ?? 0
+    }
+
+    /// Decodes Int16 from the data stream only if present
+    ///
+    /// - Returns: Int16 value
+    public mutating func decodeInt16IfPresent(_ data: Data) -> Int16? {
+        return data.scanValue(index: &index, type: Int16.self)
     }
 
     /// Deocdes UInt16 from the data stream
     ///
     /// - Returns: UInt16 value
     public mutating func decodeUInt16(_ data: Data) -> UInt16 {
-        return data.scanValue(index: &index, type: UInt16.self) ?? 0
+        return decodeUInt16IfPresent(data) ?? 0
+    }
+
+    /// Decodes UInt16 from the data stream only if present
+    ///
+    /// - Returns: UInt16 value
+    public mutating func decodeUInt16IfPresent(_ data: Data) -> UInt16? {
+        return data.scanValue(index: &index, type: UInt16.self)
     }
 
     /// Decodes UInt24 from the data stream
@@ -134,14 +188,28 @@ public extension DecodeData {
     ///
     /// - Returns: Int32 value
     public mutating func decodeInt32(_ data: Data) -> Int32 {
-        return data.scanValue(index: &index, type: Int32.self) ?? 0
+        return decodeInt32IfPresent(data) ?? 0
+    }
+
+    /// Decodes Int32 from the data stream only if present
+    ///
+    /// - Returns: Int32 value
+    public mutating func decodeInt32IfPresent(_ data: Data) -> Int32? {
+        return data.scanValue(index: &index, type: Int32.self)
     }
 
     /// Decodes UInt32 from the data stream
     ///
     /// - Returns: UInt32 value
     public mutating func decodeUInt32(_ data: Data) -> UInt32 {
-        return data.scanValue(index: &index, type: UInt32.self) ?? 0
+        return decodeUInt32IfPresent(data) ?? 0
+    }
+
+    /// Decodes UInt32 from the data stream only if present
+    ///
+    /// - Returns: UInt32 value
+    public mutating func decodeUInt32IfPresent(_ data: Data) -> UInt32? {
+        return data.scanValue(index: &index, type: UInt32.self)
     }
 
     /// Decodes UInt48 from the data stream
@@ -171,15 +239,30 @@ public extension DecodeData {
     ///
     /// - Returns: Int64 value
     public mutating func decodeInt64(_ data: Data) -> Int64 {
-        return data.scanValue(index: &index, type: Int64.self) ?? 0
+        return decodeInt64IfPresent(data) ?? 0
+    }
+
+    /// Decodes Int64 from the data stream only if present
+    ///
+    /// - Returns: Int64 value
+    public mutating func decodeInt64IfPresent(_ data: Data) -> Int64? {
+        return data.scanValue(index: &index, type: Int64.self)
     }
 
     /// Decodes UInt64 from the data stream
     ///
     /// - Returns: UInt64 value
     public mutating func decodeUInt64(_ data: Data) -> UInt64 {
-        return data.scanValue(index: &index, type: UInt64.self) ?? 0
+        return decodeUInt64IfPresent(data) ?? 0
     }
+
+    /// Decodes UInt64 from the data stream only if present
+    ///
+    /// - Returns: UInt64 value
+    public mutating func decodeUInt64IfPresent(_ data: Data) -> UInt64? {
+        return data.scanValue(index: &index, type: UInt64.self)
+    }
+
 }
 
 //MARK: - Other Decodes
@@ -251,57 +334,77 @@ public extension DecodeData {
     ///
     /// - Returns: Float value
     public mutating func decodeSFloatValue(_ data: Data) -> Float {
-        let tmpValue = data.scanValue(index: &index, type: Int16.self) ?? 0
-        var mantissa = Int16(tmpValue & 0x0FFF)
-        var exponent = Int8(tmpValue >> 12)
+        return decodeSFloatValueIfPresent(data) ?? 0
+    }
 
-        if exponent >= 0x0008 {
-            exponent = -((0x000F + 1) - exponent)
-        }
+    /// Decodes IEEE-11073 16-bit SFLOAT from the data stream only if Present
+    ///
+    /// - Returns: Float value
+    public mutating func decodeSFloatValueIfPresent(_ data: Data) -> Float? {
+        if let tmpValue = data.scanValue(index: &index, type: Int16.self)  {
+            var mantissa = Int16(tmpValue & 0x0FFF)
+            var exponent = Int8(tmpValue >> 12)
 
-        var returnResult: Float = 0
-
-        if mantissa >= DecoderSFloatValues.positiveInfinity.rawValue && mantissa <= DecoderSFloatValues.negativeInfinity.rawValue {
-            let index: Int = Int(mantissa - DecoderSFloatValues.positiveInfinity.rawValue)
-            returnResult = Float(kReservedFloatValues[index])
-        } else {
-
-            if mantissa > 0x0800 {
-                mantissa = -((0x0FFF + 1) - mantissa)
+            if exponent >= 0x0008 {
+                exponent = -((0x000F + 1) - exponent)
             }
 
-            let magnitude = pow(10.0, Double(exponent))
-            returnResult = Float(mantissa) * Float(magnitude)
+            var returnResult: Float = 0
 
+            if mantissa >= DecoderSFloatValues.positiveInfinity.rawValue && mantissa <= DecoderSFloatValues.negativeInfinity.rawValue {
+                let index: Int = Int(mantissa - DecoderSFloatValues.positiveInfinity.rawValue)
+                returnResult = Float(kReservedFloatValues[index])
+            } else {
+
+                if mantissa > 0x0800 {
+                    mantissa = -((0x0FFF + 1) - mantissa)
+                }
+
+                let magnitude = pow(10.0, Double(exponent))
+                returnResult = Float(mantissa) * Float(magnitude)
+
+            }
+
+            return returnResult
         }
 
-        return returnResult
+        return nil
     }
 
     /// Decodes IEEE-11073 32-bit FLOAT from the data stream
     ///
     /// - Returns: Float value
     public mutating func decodeFloatValue(_ data: Data) -> Float {
-        let tmpValue = data.scanValue(index: &index, type: Int32.self) ?? 0
-        var mantissa = Int32(tmpValue & 0x00FFFFFF)
-        let exponent = Int8(tmpValue >> 24)
+        return decodeFloatValueifPresent(data) ?? 0
+    }
 
-        var returnResult: Float = 0
+    /// Decodes IEEE-11073 32-bit FLOAT from the data stream
+    ///
+    /// - Returns: Float value
+    public mutating func decodeFloatValueifPresent(_ data: Data) -> Float? {
+        if let tmpValue = data.scanValue(index: &index, type: Int32.self) {
+            var mantissa = Int32(tmpValue & 0x00FFFFFF)
+            let exponent = Int8(tmpValue >> 24)
 
-        if mantissa >= Int32(DecoderFloatValues.positiveInfinity.rawValue) && mantissa <= Int32(DecoderFloatValues.negativeInfinity.rawValue) {
-            let index: Int = Int(mantissa - Int32(DecoderFloatValues.positiveInfinity.rawValue))
-            returnResult = Float(kReservedFloatValues[index])
-        } else {
+            var returnResult: Float = 0
 
-            if mantissa >= 0x800000 {
-                mantissa = -((0xFFFFFF + 1) - mantissa)
+            if mantissa >= Int32(DecoderFloatValues.positiveInfinity.rawValue) && mantissa <= Int32(DecoderFloatValues.negativeInfinity.rawValue) {
+                let index: Int = Int(mantissa - Int32(DecoderFloatValues.positiveInfinity.rawValue))
+                returnResult = Float(kReservedFloatValues[index])
+            } else {
+
+                if mantissa >= 0x800000 {
+                    mantissa = -((0xFFFFFF + 1) - mantissa)
+                }
+
+                let magnitude = pow(10.0, Double(exponent))
+                returnResult = Float(mantissa) * Float(magnitude)
+
             }
 
-            let magnitude = pow(10.0, Double(exponent))
-            returnResult = Float(mantissa) * Float(magnitude)
-
+            return returnResult
         }
 
-        return returnResult
+        return nil
     }
 }

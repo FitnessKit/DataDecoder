@@ -3,35 +3,6 @@ import XCTest
 
 class DataDecoderTests: XCTestCase {
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-            let sensorData: Data = Data([0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
-
-            var decoder = DataDecoder(sensorData)
-
-            for _ in sensorData {
-                let _ = decoder.decodeUInt8()
-            }
-        }
-    }
-
-    func testNewPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-            let sensorData: Data = Data([0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
-
-            var tester = DecodeData()
-
-            for _ in sensorData {
-                let _ = tester.decodeInt8(sensorData)
-            }
-        }
-    }
-
-
     func testSimpleDecodes() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -69,6 +40,102 @@ class DataDecoderTests: XCTestCase {
 
     }
 
+    func testUInt24()  {
+        let ipData: Data = Data([0xFF, 0xFF, 0xFF])
+
+        var decoder = DataDecoder(ipData)
+
+        let value = decoder.decodeUInt24()
+
+        if value != 0xFFFFFF {
+            XCTFail()
+        }
+    }
+
+    func testUInt48()  {
+        let ipData: Data = Data([0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF])
+
+        var decoder = DataDecoder(ipData)
+
+        let value = decoder.decodeUInt48()
+
+        if value != 0xFFFFFFFFFFFF {
+            XCTFail()
+        }
+    }
+
+    func testIPAddress()  {
+        let ipData: Data = Data([ 0xAD, 0xA5, 0xEE, 0xB2])
+
+        var decoder = DataDecoder(ipData)
+
+        let ipaddress = decoder.decodeIPAddress()
+
+        if ipaddress != "173.165.238.178" {
+            XCTFail()
+        }
+    }
+
+    func testMACAddress() {
+        let ipData: Data = Data([ 0x00, 0x50, 0xC2, 0x34, 0xF7, 0x11])
+
+        var decoder = DataDecoder(ipData)
+
+        let macaddress = decoder.decodeMACAddress()
+
+        if macaddress.stringValue != "00:50:C2:34:F7:11" {
+            XCTFail()
+        }
+
+    }
+
+    static var allTests : [(String, (DataDecoderTests) -> () throws -> Void)] {
+        return [
+            ("testSimpleDecodes", testSimpleDecodes),
+            ("testUInt24", testUInt24),
+            ("testUInt48", testUInt48),
+            ("testIPAddress", testIPAddress),
+            ("testMACADdress", testMACAddress),
+
+
+            ("testDataDecodeNew", testDataDecodeNew),
+            ("testSimpleDecodesNew", testSimpleDecodesNew),
+            ("testUInt24New", testUInt24New),
+            ("testUInt48New", testUInt48New),
+            ("testIPAddressNew", testIPAddressNew),
+            ("testMACAddressNew", testMACAddressNew),
+
+        ]
+    }
+}
+
+// MARK: Zero Copy
+extension DataDecoderTests {
+
+    func testDataDecodeNew()  {
+        let ipData: Data = Data([0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
+
+        var decoder = DecodeData()
+
+        let value = decoder.decodeDataIfPresent(ipData, length: 2)
+
+        if let value = value {
+            if value[1] != ipData[1] {
+                XCTFail()
+            }
+            var decoder = DecodeData()
+
+            let value = decoder.decodeData(ipData, length: ipData.count + 1)
+            if value.count != 0 {
+                XCTFail()
+            }
+
+        } else {
+
+        }
+
+    }
+
     func testSimpleDecodesNew() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -78,7 +145,11 @@ class DataDecoderTests: XCTestCase {
         let DEADBEEF: UInt32 = 3735928559
 
         var decoder = DecodeData()
-        let height = decoder.decodeUInt8(sensorData)
+//        let height = decoder.decodeUInt8(sensorData)
+        guard let height = decoder.decodeUInt8IfPresent(sensorData) else {
+            XCTFail()
+            return
+        }
         let weight = decoder.decodeUInt16(sensorData)
         let beef = decoder.decodeUInt32(sensorData)
         let nib = decoder.decodeNibble(sensorData)
@@ -106,19 +177,6 @@ class DataDecoderTests: XCTestCase {
 
     }
 
-
-    func testUInt24()  {
-        let ipData: Data = Data([0xFF, 0xFF, 0xFF])
-
-        var decoder = DataDecoder(ipData)
-
-        let value = decoder.decodeUInt24()
-
-        if value != 0xFFFFFF {
-            XCTFail()
-        }
-    }
-
     func testUInt24New()  {
         let ipData: Data = Data([0xFF, 0xFF, 0xFF])
 
@@ -127,19 +185,6 @@ class DataDecoderTests: XCTestCase {
         let value = decoder.decodeUInt24(ipData)
 
         if value != 0xFFFFFF {
-            XCTFail()
-        }
-    }
-
-
-    func testUInt48()  {
-        let ipData: Data = Data([0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF])
-
-        var decoder = DataDecoder(ipData)
-
-        let value = decoder.decodeUInt48()
-
-        if value != 0xFFFFFFFFFFFF {
             XCTFail()
         }
     }
@@ -156,19 +201,6 @@ class DataDecoderTests: XCTestCase {
         }
     }
 
-
-    func testIPAddress()  {
-        let ipData: Data = Data([ 0xAD, 0xA5, 0xEE, 0xB2])
-
-        var decoder = DataDecoder(ipData)
-
-        let ipaddress = decoder.decodeIPAddress()
-
-        if ipaddress != "173.165.238.178" {
-            XCTFail()
-        }
-    }
-
     func testIPAddressNew()  {
         let ipData: Data = Data([ 0xAD, 0xA5, 0xEE, 0xB2])
 
@@ -181,20 +213,6 @@ class DataDecoderTests: XCTestCase {
         }
     }
 
-
-    func testMACAddress() {
-        let ipData: Data = Data([ 0x00, 0x50, 0xC2, 0x34, 0xF7, 0x11])
-
-        var decoder = DataDecoder(ipData)
-
-        let macaddress = decoder.decodeMACAddress()
-
-        if macaddress.stringValue != "00:50:C2:34:F7:11" {
-            XCTFail()
-        }
-
-    }
-
     func testMACAddressNew() {
         let ipData: Data = Data([ 0x00, 0x50, 0xC2, 0x34, 0xF7, 0x11])
 
@@ -205,17 +223,36 @@ class DataDecoderTests: XCTestCase {
         if macaddress.stringValue != "00:50:C2:34:F7:11" {
             XCTFail()
         }
+    }
+}
 
+// MARK: Performance
+extension DataDecoderTests {
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+            let sensorData: Data = Data([0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
+
+            var decoder = DataDecoder(sensorData)
+
+            for _ in sensorData {
+                let _ = decoder.decodeUInt8()
+            }
+        }
     }
 
+    func testNewPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+            let sensorData: Data = Data([0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5, 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
 
-    static var allTests : [(String, (DataDecoderTests) -> () throws -> Void)] {
-        return [
-            ("testSimpleDecodes", testSimpleDecodes),
-            ("testUInt24", testUInt24),
-            ("testUInt48", testUInt48),
-            ("testIPAddress", testIPAddress),
-            ("testMACADdress", testMACAddress),
-        ]
+            var tester = DecodeData()
+
+            for _ in sensorData {
+                let _ = tester.decodeInt8(sensorData)
+            }
+        }
     }
 }

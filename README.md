@@ -61,7 +61,6 @@ let novalue = decoder.decodeUInt8IfPresent(sensorData) // This will be nil as th
 ~~~
 
 
-
 ## Data Decoders ##
 
 * Nibble

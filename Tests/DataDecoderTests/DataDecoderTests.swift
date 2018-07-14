@@ -109,6 +109,13 @@ class DataDecoderTests: XCTestCase {
     }
 }
 
+extension Data {
+    /// Returns a `0x` prefixed, space-separated, hex-encoded string for this `Data`.
+    public var hexDebug: String {
+        return "0x" + map { String(format: "%02X", $0) }.joined(separator: " ")
+    }
+}
+
 // MARK: Zero Copy
 extension DataDecoderTests {
 
@@ -117,10 +124,11 @@ extension DataDecoderTests {
 
         var decoder = DecodeData()
 
-        let value = decoder.decodeDataIfPresent(ipData, length: 2)
+        let size = decoder.decodeUInt8(ipData)
+        let value = decoder.decodeDataIfPresent(ipData, length: Int(size))
 
         if let value = value {
-            if value[1] != ipData[1] {
+            if value.count != size {
                 XCTFail()
             }
             var decoder = DecodeData()

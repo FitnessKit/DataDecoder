@@ -34,6 +34,8 @@ Swift4
 
 ## How to Use ##
 
+Example:
+
 ~~~
   let sensorData: Data = Data([ 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
 
@@ -45,6 +47,21 @@ Swift4
   let novalue = decoder.decodeNibble(sensorData) //This should come back 0 as there is no more data left
 ~~~
 
+Example Using Optionals:
+~~~
+let sensorData: Data = Data([ 0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])
+
+var decoder = DecodeData()
+
+if let height = decoder.decodeUInt8IfPresent(sensorData) {}
+let weight = decoder.decodeUInt16IfPresent(sensorData)
+let deadbeef = decoder.decodeUInt32IfPresent(sensorData)
+let nib = decoder.decodeNibbleIfPresent(sensorData)
+let novalue = decoder.decodeUInt8IfPresent(sensorData) // This will be nil as there is no data left
+~~~
+
+
+
 ## Data Decoders ##
 
 * Nibble
@@ -54,10 +71,18 @@ Swift4
 * UInt32/Int32
 * UInt48
 * UInt64/Int64
-* IEEE-11073 16-bit SFLOAT
-* IEEE-11073 32-bit FLOAT
 * IP Address to String Value
 * MAC Address to String Value
+
+### IEEE-11073
+
+* 16-bit SFLOAT
+* 32-bit FLOAT
+
+### IEEE-754
+
+* Float32
+* Float64
 
 ## Author
 

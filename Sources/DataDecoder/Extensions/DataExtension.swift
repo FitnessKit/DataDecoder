@@ -27,6 +27,11 @@ import Foundation
 //MARK: - Values
 extension Data {
 
+    init<T>(from value: T) {
+        var value = value
+        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
+    }
+
     func scanValue<T>(start: Int, length: Int) -> T {
         return self.subdata(in: start..<start+length).withUnsafeBytes { $0.pointee }
     }

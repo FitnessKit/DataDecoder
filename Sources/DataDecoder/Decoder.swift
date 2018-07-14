@@ -47,7 +47,9 @@ public extension DecodeData {
 
     /// Decodes Raw data from data Stream
     ///
-    /// - Parameter length: Length of Data to pull out of stream
+    /// - Parameters:
+    ///   - data: Data stream
+    ///   - length: Length of Data to pull out of stream
     /// - Returns: Data Instance
     public mutating func decodeData(_ data: Data, length: Int) -> Data {
         return decodeDataIfPresent(data, length: length) ?? Data()
@@ -55,6 +57,7 @@ public extension DecodeData {
 
     /// Decodes Raw data from data Stream only if Present
     ///
+    /// - Parameter data: Data stream
     /// - Parameter length: Length of Data to pull out of stream
     /// - Returns: Data Instance
     public mutating func decodeDataIfPresent(_ data: Data, length: Int) -> Data? {
@@ -73,6 +76,7 @@ public extension DecodeData {
 
     /// Decodes Nibble from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Nibble Instance
     public mutating func decodeNibble(_ data: Data) -> Nibble {
         let value = decodeNibbleIfPresent(data) ?? Nibble(0)
@@ -81,6 +85,7 @@ public extension DecodeData {
 
     /// Decodes Nibble from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Nibble value
     public mutating func decodeNibbleIfPresent(_ data: Data) -> Nibble? {
         let value = data.scanValue(index: &index, type: UInt8.self)
@@ -94,6 +99,7 @@ public extension DecodeData {
 
     /// Decodes Int8 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int8 value
     public mutating func decodeInt8(_ data: Data) -> Int8 {
         return decodeInt8IfPresent(data) ?? 0
@@ -101,6 +107,7 @@ public extension DecodeData {
 
     /// Decodes Int8 from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt8 value
     public mutating func decodeInt8IfPresent(_ data: Data) -> Int8? {
         return data.scanValue(index: &index, type: Int8.self)
@@ -108,6 +115,7 @@ public extension DecodeData {
 
     /// Decodes UInt8 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt8 value
     public mutating func decodeUInt8(_ data: Data) -> UInt8 {
         return decodeUInt8IfPresent(data) ?? 0
@@ -115,6 +123,7 @@ public extension DecodeData {
 
     /// Decodes UInt8 from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt8 value
     public mutating func decodeUInt8IfPresent(_ data: Data) -> UInt8? {
         return data.scanValue(index: &index, type: UInt8.self)
@@ -122,6 +131,7 @@ public extension DecodeData {
 
     /// Decodes Int16 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int16 value
     public mutating func decodeInt16(_ data: Data) -> Int16 {
         return decodeInt16IfPresent(data) ?? 0
@@ -129,6 +139,7 @@ public extension DecodeData {
 
     /// Decodes Int16 from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int16 value
     public mutating func decodeInt16IfPresent(_ data: Data) -> Int16? {
         return data.scanValue(index: &index, type: Int16.self)
@@ -136,6 +147,7 @@ public extension DecodeData {
 
     /// Deocdes UInt16 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt16 value
     public mutating func decodeUInt16(_ data: Data) -> UInt16 {
         return decodeUInt16IfPresent(data) ?? 0
@@ -143,6 +155,7 @@ public extension DecodeData {
 
     /// Decodes UInt16 from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt16 value
     public mutating func decodeUInt16IfPresent(_ data: Data) -> UInt16? {
         return data.scanValue(index: &index, type: UInt16.self)
@@ -150,6 +163,7 @@ public extension DecodeData {
 
     /// Decodes UInt24 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int value
     public mutating func decodeUInt24(_ data: Data) -> Int {
         let val0 = data.scanValue(index: &index, type: UInt8.self) ?? 0
@@ -162,6 +176,7 @@ public extension DecodeData {
 
     /// Decodes Int24 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int value
     public mutating func decodeInt24(_ data: Data) -> Int {
         let val0 = data.scanValue(index: &index, type: UInt8.self) ?? 0
@@ -186,6 +201,7 @@ public extension DecodeData {
 
     /// Decodes Int32 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int32 value
     public mutating func decodeInt32(_ data: Data) -> Int32 {
         return decodeInt32IfPresent(data) ?? 0
@@ -193,6 +209,7 @@ public extension DecodeData {
 
     /// Decodes Int32 from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int32 value
     public mutating func decodeInt32IfPresent(_ data: Data) -> Int32? {
         return data.scanValue(index: &index, type: Int32.self)
@@ -200,6 +217,7 @@ public extension DecodeData {
 
     /// Decodes UInt32 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt32 value
     public mutating func decodeUInt32(_ data: Data) -> UInt32 {
         return decodeUInt32IfPresent(data) ?? 0
@@ -207,6 +225,7 @@ public extension DecodeData {
 
     /// Decodes UInt32 from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt32 value
     public mutating func decodeUInt32IfPresent(_ data: Data) -> UInt32? {
         return data.scanValue(index: &index, type: UInt32.self)
@@ -214,6 +233,7 @@ public extension DecodeData {
 
     /// Decodes UInt48 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt value
     public mutating func decodeUInt48(_ data: Data) -> UInt {
         let val0 = data.scanValue(index: &index, type: UInt8.self) ?? 0
@@ -237,6 +257,7 @@ public extension DecodeData {
 
     /// Deocdes Int64 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int64 value
     public mutating func decodeInt64(_ data: Data) -> Int64 {
         return decodeInt64IfPresent(data) ?? 0
@@ -244,6 +265,7 @@ public extension DecodeData {
 
     /// Decodes Int64 from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Int64 value
     public mutating func decodeInt64IfPresent(_ data: Data) -> Int64? {
         return data.scanValue(index: &index, type: Int64.self)
@@ -251,6 +273,7 @@ public extension DecodeData {
 
     /// Decodes UInt64 from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt64 value
     public mutating func decodeUInt64(_ data: Data) -> UInt64 {
         return decodeUInt64IfPresent(data) ?? 0
@@ -258,6 +281,7 @@ public extension DecodeData {
 
     /// Decodes UInt64 from the data stream only if present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: UInt64 value
     public mutating func decodeUInt64IfPresent(_ data: Data) -> UInt64? {
         return data.scanValue(index: &index, type: UInt64.self)
@@ -270,6 +294,7 @@ public extension DecodeData {
 
     /// Decodes IP Address from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Parameter fromLittleEndian: If IP Address is encoded as Little Endian
     /// - Returns: String Representation of the IP Address
     public mutating func decodeIPAddress(_ data: Data, fromLittleEndian: Bool = false) -> String {
@@ -291,6 +316,7 @@ public extension DecodeData {
 
     /// Decodes MAC Address from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Parameter fromLittleEndian: If MAC is encoded as Little Endian
     /// - Returns: String Representation of the MAC Address
     public mutating func decodeMACAddress(_ data: Data, fromLittleEndian: Bool = false) -> MACAddress {
@@ -319,6 +345,7 @@ public extension DecodeData {
 
     /// Decodes ANT Toggle Byte from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: ANTToggleByte Instance
     public mutating func decodeANTToggleByte(_ data: Data) -> ANTToggleByte {
         let value = data.scanValue(index: &index, type: UInt8.self) ?? 0
@@ -327,11 +354,49 @@ public extension DecodeData {
 
 }
 
-//MARK: - IEEE Decodes
+//MARK: - IEEE-754 Decodes
+public extension DecodeData {
+
+    /// Decodes IEEE-754 Float32 from the data stream
+    ///
+    /// - Parameter data: Data stream
+    /// - Returns: Float32 Value
+    public mutating func decodeFloat32(_ data: Data) -> Float32 {
+        return decodeFloat32IfPresent(data) ?? 0.0
+    }
+
+    /// Decodes IEEE-754 Float32 from the data stream if present
+    ///
+    /// - Parameter data: Data stream
+    /// - Returns: Float32 Value
+    public mutating func decodeFloat32IfPresent(_ data: Data) -> Float32? {
+        return data.scanValue(index: &index, type: Float32.self)
+    }
+
+    /// Decodes IEEE-754 Float64 from the data stream
+    ///
+    /// - Parameter data: Data stream
+    /// - Returns: Float64 Value
+    public mutating func decodeFloat64(_ data: Data) -> Float64 {
+        return decodeFloat64IfPresent(data) ?? 0.0
+    }
+
+    /// Decodes IEEE-754 Float64 from the data stream if present
+    ///
+    /// - Parameter data: Data stream
+    /// - Returns: Float64 Value
+    public mutating func decodeFloat64IfPresent(_ data: Data) -> Float64? {
+        return data.scanValue(index: &index, type: Float64.self)
+    }
+
+}
+
+//MARK: - IEEE-11073 Decodes
 public extension DecodeData {
 
     /// Decodes IEEE-11073 16-bit SFLOAT from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Float value
     public mutating func decodeSFloatValue(_ data: Data) -> Float {
         return decodeSFloatValueIfPresent(data) ?? 0
@@ -339,6 +404,7 @@ public extension DecodeData {
 
     /// Decodes IEEE-11073 16-bit SFLOAT from the data stream only if Present
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Float value
     public mutating func decodeSFloatValueIfPresent(_ data: Data) -> Float? {
         if let tmpValue = data.scanValue(index: &index, type: Int16.self)  {
@@ -351,7 +417,8 @@ public extension DecodeData {
 
             var returnResult: Float = 0
 
-            if mantissa >= DecoderSFloatValues.positiveInfinity.rawValue && mantissa <= DecoderSFloatValues.negativeInfinity.rawValue {
+            if mantissa >= DecoderSFloatValues.positiveInfinity.rawValue &&
+                mantissa <= DecoderSFloatValues.negativeInfinity.rawValue {
                 let index: Int = Int(mantissa - DecoderSFloatValues.positiveInfinity.rawValue)
                 returnResult = Float(kReservedFloatValues[index])
             } else {
@@ -362,7 +429,6 @@ public extension DecodeData {
 
                 let magnitude = pow(10.0, Double(exponent))
                 returnResult = Float(mantissa) * Float(magnitude)
-
             }
 
             return returnResult
@@ -373,6 +439,7 @@ public extension DecodeData {
 
     /// Decodes IEEE-11073 32-bit FLOAT from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Float value
     public mutating func decodeFloatValue(_ data: Data) -> Float {
         return decodeFloatValueifPresent(data) ?? 0
@@ -380,6 +447,7 @@ public extension DecodeData {
 
     /// Decodes IEEE-11073 32-bit FLOAT from the data stream
     ///
+    /// - Parameter data: Data stream
     /// - Returns: Float value
     public mutating func decodeFloatValueifPresent(_ data: Data) -> Float? {
         if let tmpValue = data.scanValue(index: &index, type: Int32.self) {
@@ -399,7 +467,6 @@ public extension DecodeData {
 
                 let magnitude = pow(10.0, Double(exponent))
                 returnResult = Float(mantissa) * Float(magnitude)
-
             }
 
             return returnResult

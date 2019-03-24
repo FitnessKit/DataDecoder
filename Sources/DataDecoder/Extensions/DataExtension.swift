@@ -46,8 +46,9 @@ extension Data {
         if toSize > self.count {
             return nil
         }
+
         index = index + MemoryLayout<T>.size
-        return self.subdata(in: scanIdx..<toSize).withUnsafeBytes { $0.pointee }
+        return self.subdata(in: scanIdx..<toSize).withUnsafeBytes { $0.pointee } as T
     }
 
     func to<T>(type: T.Type) -> T {

@@ -22,7 +22,6 @@
 
 /* Begin PBXBuildFile section */
 		045CB44D20DE976B000210F2 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045CB44C20DE976B000210F2 /* Decoder.swift */; };
-		OBJ_27 /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* DataDecoder.swift */; };
 		OBJ_28 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* DataExtension.swift */; };
 		OBJ_29 /* ANTToggleByte.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* ANTToggleByte.swift */; };
 		OBJ_30 /* MACAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* MACAddress.swift */; };
@@ -61,7 +60,6 @@
 		OBJ_15 /* Nibble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nibble.swift; sourceTree = "<group>"; };
 		OBJ_18 /* DataDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoderTests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +148,6 @@
 		OBJ_8 /* DataDecoder */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* DataDecoder.swift */,
 				045CB44C20DE976B000210F2 /* Decoder.swift */,
 				OBJ_10 /* Extensions */,
 				OBJ_12 /* Types */,
@@ -242,7 +239,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_27 /* DataDecoder.swift in Sources */,
 				OBJ_28 /* DataExtension.swift in Sources */,
 				OBJ_29 /* ANTToggleByte.swift in Sources */,
 				OBJ_30 /* MACAddress.swift in Sources */,

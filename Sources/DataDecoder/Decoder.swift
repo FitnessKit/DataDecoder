@@ -24,6 +24,22 @@
 
 import Foundation
 
+internal enum DecoderSFloatValues: Int16 {
+    case positiveInfinity       = 0x07FE
+    case nan                    = 0x07FF
+    case res                    = 0x0800
+    case reservedvalue          = 0x0801
+    case negativeInfinity       = 0x0802
+}
+
+internal enum DecoderFloatValues: UInt32 {
+    case positiveInfinity       = 0x007FFFFE
+    case nan                    = 0x007FFFFF
+    case res                    = 0x00800000
+    case reservedvalue          = 0x00800001
+    case negativeInfinity       = 0x00800002
+}
+
 /// Decoder
 ///
 /// Provides easy methods for Decoding values out of a Data Stream

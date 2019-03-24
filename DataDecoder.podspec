@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DataDecoder'
-  s.version          = '4.3.1'
+  s.version          = '4.4.0'
   s.summary          = 'Swift Data Decoder. Easily Decode Data values'
 
   s.description      = <<-DESC

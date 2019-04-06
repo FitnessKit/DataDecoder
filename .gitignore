@@ -101,6 +101,7 @@ fastlane/test_output
 Packages
 .build
 xcuserdata
-#*.xcodeproj
+*.xcscheme
+*.xcodeproj
 
 # End of https://www.gitignore.io/api/swiftpackagemanager,osx,swift

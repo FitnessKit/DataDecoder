@@ -53,16 +53,17 @@ extension Nibble: Equatable {
 
 extension Nibble: Hashable {
 
-    public var hashValue: Int {
-        return uint8Value.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(uint8Value)
     }
+
 }
 
 
 ///MARK: - UInt8 Extension
 public extension UInt8 {
 
-    public var nibbleValue: Nibble {
+    var nibbleValue: Nibble {
         return Nibble(self)
     }
 }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DataDecoder'
-  s.version          = '4.4.0'
+  s.version          = '5.0.0'
   s.summary          = 'Swift Data Decoder. Easily Decode Data values'
 
   s.description      = <<-DESC
@@ -19,6 +19,7 @@ Swift Data Decoder. Easily Decode Data values.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Kevin A. Hoogheem' => 'kevin@hoogheem.net' }
   s.source           = { :git => 'https://github.com/FitnessKit/DataDecoder.git', :tag => s.version.to_s }
+  s.swift_version    = '5.0'
 
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'

@@ -22,7 +22,7 @@ Swift Package Manager:
 Swift4
 ```swift
     dependencies: [
-        .package(url: "https://github.com/FitnessKit/DataDecoder", from: "4.4.0"),
+        .package(url: "https://github.com/FitnessKit/DataDecoder", .branch("swift42")),
     ]
 ```
 

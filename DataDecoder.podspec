@@ -20,6 +20,8 @@ Swift Data Decoder. Easily Decode Data values.
   s.author           = { 'Kevin A. Hoogheem' => 'kevin@hoogheem.net' }
   s.source           = { :git => 'https://github.com/FitnessKit/DataDecoder.git', :tag => s.version.to_s }
 
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
+
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
   s.tvos.deployment_target = '9.0'

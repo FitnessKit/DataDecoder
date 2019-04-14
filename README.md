@@ -25,6 +25,14 @@ Swift Package Manager:
     ]
 ```
 
+Swift4
+```swift
+    dependencies: [
+        .package(url: "https://github.com/FitnessKit/DataDecoder", .branch("swift42")),
+    ]
+```
+
+
 ## How to Use ##
 
 Example:

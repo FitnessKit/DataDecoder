@@ -1,0 +1,14 @@
+module: DataDecoder
+author: Kevin A. Hoogheem
+github_url: https://github.com/FitnessKit/DataDecoder
+
+readme: README.md
+
+output: docs
+clean: true
+theme: jony
+
+copyright: '© 2017 Kevin A. Hoogheem'
+
+xcodebuild_arguments: [-scheme,DataDecoder-Package]
+

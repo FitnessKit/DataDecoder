@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DataDecoder  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="DataDecoder  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p>
+          <a href="index.html">DataDecoder Docs</a>
+          <span class="no-mobile"> (72% documented)</span>
+        </p>
+    
+        <p class="header-right">
+          <a href="https://github.com/FitnessKit/DataDecoder">
+            <img src="img/gh.png"/>
+            <span class="no-mobile">View on GitHub</span>
+          </a>
+        </p>
+    
+      </div>
+    </header>
+    <div id="breadcrumbs-container">
+      <div class="content-wrapper">
+        <p id="breadcrumbs">
+          <span class="no-mobile">
+            <a href="index.html">DataDecoder Reference</a>
+            <img id="carat" src="img/carat.png" />
+          </span>
+          DataDecoder  Reference
+        </p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="article-wrapper">
+        <article class="main-content">
+          <section>
+            <section class="section">
+              
+              <h1 id='datadecoder' class='heading'>DataDecoder</h1>
+
+<p>Swift Data Decoder.  Easily Decode Data values</p>
+
+<p><a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift5-compatible-4BC51D.svg?style=flat" alt="Swift5"></a>
+<a href="https://travis-ci.org/FitnessKit/DataDecoder"><img src="http://img.shields.io/travis/FitnessKit/DataDecoder.svg?style=flat" alt="CI Status"></a>
+<a href="http://cocoapods.org/pods/DataDecoder"><img src="https://img.shields.io/cocoapods/v/DataDecoder.svg?style=flat" alt="Version"></a>
+<a href="http://cocoapods.org/pods/DataDecoder"><img src="https://img.shields.io/cocoapods/l/DataDecoder.svg?style=flat" alt="License"></a>
+<a href="http://cocoapods.org/pods/DataDecoder"><img src="https://img.shields.io/cocoapods/p/DataDecoder.svg?style=flat" alt="Platform"></a>
+<a href="http://clayallsopp.github.io/readme-score?url=https://github.com/fitnesskit/datadecoder"><img src="http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/fitnesskit/datadecoder" alt="Readme Score"></a></p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>DataDecoder is available through <a href="http://cocoapods.org">CocoaPods</a>. To install
+it, simply add the following line to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"DataDecoder"</span>
+</code></pre>
+
+<p>Swift Package Manager:</p>
+<pre class="highlight swift"><code>    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/FitnessKit/DataDecoder"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"5.0.0"</span><span class="p">),</span>
+    <span class="p">]</span>
+</code></pre>
+
+<p>Swift4</p>
+<pre class="highlight swift"><code>    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/FitnessKit/DataDecoder"</span><span class="p">,</span> <span class="o">.</span><span class="nf">branch</span><span class="p">(</span><span class="s">"swift42"</span><span class="p">)),</span>
+    <span class="p">]</span>
+</code></pre>
+<h2 id='how-to-use' class='heading'>How to Use</h2>
+
+<p>Example:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">sensorData</span><span class="p">:</span> <span class="kt">Data</span> <span class="o">=</span> <span class="kt">Data</span><span class="p">([</span> <span class="mh">0x02</span><span class="p">,</span> <span class="mh">0xFE</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xEF</span><span class="p">,</span> <span class="mh">0xBE</span><span class="p">,</span> <span class="mh">0xAD</span><span class="p">,</span> <span class="mh">0xDE</span><span class="p">,</span> <span class="mh">0xA5</span><span class="p">])</span>
+
+<span class="k">var</span> <span class="nv">decoder</span> <span class="o">=</span> <span class="kt">DecodeData</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">height</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeUInt8</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">weight</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeUInt16</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">deadbeef</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeUInt32</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">nib</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeNibble</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+<span class="c1">//This should come back 0 as there is no more data left</span>
+<span class="k">let</span> <span class="nv">novalue</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeNibble</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+</code></pre>
+
+<p>Example Using Optionals:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">sensorData</span><span class="p">:</span> <span class="kt">Data</span> <span class="o">=</span> <span class="kt">Data</span><span class="p">([</span> <span class="mh">0x02</span><span class="p">,</span> <span class="mh">0xFE</span><span class="p">,</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xEF</span><span class="p">,</span> <span class="mh">0xBE</span><span class="p">,</span> <span class="mh">0xAD</span><span class="p">,</span> <span class="mh">0xDE</span><span class="p">,</span> <span class="mh">0xA5</span><span class="p">])</span>
+
+<span class="k">var</span> <span class="nv">decoder</span> <span class="o">=</span> <span class="kt">DecodeData</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="k">let</span> <span class="nv">height</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeUInt8IfPresent</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span> <span class="p">{}</span>
+<span class="k">let</span> <span class="nv">weight</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeUInt16IfPresent</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">deadbeef</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeUInt32IfPresent</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">nib</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeNibbleIfPresent</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+<span class="c1">// This will be nil as there is no data left</span>
+<span class="k">let</span> <span class="nv">novalue</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="nf">decodeUInt8IfPresent</span><span class="p">(</span><span class="n">sensorData</span><span class="p">)</span>
+</code></pre>
+<h2 id='data-decoders' class='heading'>Data Decoders</h2>
+
+<ul>
+<li>Nibble</li>
+<li>UInt8/Int8</li>
+<li>UInt16/Int16</li>
+<li>UInt24/Int23</li>
+<li>UInt32/Int32</li>
+<li>UInt48</li>
+<li>UInt64/Int64</li>
+<li>IP Address to String Value</li>
+<li>MAC Address to String Value</li>
+</ul>
+<h3 id='ieee-11073' class='heading'>IEEE-11073</h3>
+
+<ul>
+<li>16-bit SFLOAT</li>
+<li>32-bit FLOAT</li>
+</ul>
+<h3 id='ieee-754' class='heading'>IEEE-754</h3>
+
+<ul>
+<li>Float32</li>
+<li>Float64</li>
+</ul>
+<h2 id='author' class='heading'>Author</h2>
+
+<p>This package is developed and maintained by Kevin A. Hoogheem</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>DataDecoder is available under the <a href="http://opensource.org/licenses/MIT">MIT license</a></p>
+
+            </section>
+          </section>
+        </article>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="nav-bottom">
+          <ul class="nav-groups">
+            <li class="nav-group-name">
+              <a href="Extensions.html">Extensions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Extensions/UInt8.html">UInt8</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Structs.html">Structures</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Structs/ANTToggleByte.html">ANTToggleByte</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/DecodeData.html">DecodeData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/MACAddress.html">MACAddress</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/Nibble.html">Nibble</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-wrapper">
+        <section id="footer">
+          <p>© 2017 Kevin A. Hoogheem</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </div>
+    </div>
+  </body>
+</div>
+</html>

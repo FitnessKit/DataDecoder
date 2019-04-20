@@ -28,19 +28,15 @@ import Foundation
 extension Data {
 
     init<T>(from value: T) {
-        var value = value
-        self.init(buffer: UnsafeBufferPointer(start: &value, count: 1))
+        self = Swift.withUnsafeBytes(of: value) { Data($0) }
     }
 
-    func scanValue<T>(start: Int, length: Int) -> T {
-        return self.subdata(in: start..<start+length).withUnsafeBytes { $0.pointee }
+    func scanValue<T>(start: Int, type: T.Type) -> T where T: ExpressibleByIntegerLiteral {
+        let value = self.subdata(in: start..<start + MemoryLayout<T>.size)
+        return value.to(type: type.self)
     }
 
-    func scanValue<T>(start: Int, type: T.Type) -> T {
-        return self.subdata(in: start..<start + MemoryLayout<T>.size).withUnsafeBytes { $0.pointee }
-    }
-
-    func scanValue<T>(index: inout Int, type: T.Type) -> T? {
+    func scanValue<T>(index: inout Int, type: T.Type) -> T? where T: ExpressibleByIntegerLiteral {
         let scanIdx = index
         let toSize = scanIdx + MemoryLayout<T>.size
         if toSize > self.count {
@@ -48,11 +44,21 @@ extension Data {
         }
 
         index = index + MemoryLayout<T>.size
-        return self.subdata(in: scanIdx..<toSize).withUnsafeBytes { $0.pointee } as T
+        let value = self.subdata(in: scanIdx..<toSize)
+        return value.to(type: type.self) as T
     }
 
-    func to<T>(type: T.Type) -> T {
-        return self.withUnsafeBytes { $0.pointee }
+    func to<T>(type: T.Type) -> T? where T: ExpressibleByIntegerLiteral {
+        var value: T = 0
+        guard count >= MemoryLayout.size(ofValue: value) else { return nil }
+        _ = Swift.withUnsafeMutableBytes(of: &value, { copyBytes(to: $0)} )
+        return value
+    }
+    
+    func to<T>(type: T.Type) -> T where T: ExpressibleByIntegerLiteral {
+        var value: T = 0
+        _ = Swift.withUnsafeMutableBytes(of: &value, { copyBytes(to: $0)} )
+        return value as T
     }
 }
 

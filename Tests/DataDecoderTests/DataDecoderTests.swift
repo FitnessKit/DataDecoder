@@ -3,9 +3,19 @@ import XCTest
 
 class DataDecoderTests: XCTestCase {
 
+    let deadBeefData: Data = Data([0xEF, 0xBE, 0xAD, 0xDE])
+    let beefData: Data = Data([0xEF, 0xBE, 0xAD, 0xDE])
+    let DEADBEEF: UInt32 = 3735928559
+    let DEAD: UInt16 = 57005
+    let BEEF: UInt16 = 48879
+
     static var allTests : [(String, (DataDecoderTests) -> () throws -> Void)] {
         return [
 
+            ("testDataExtensionDouble", testDataExtensionDouble),
+            ("testDataExtensionFloat", testDataExtensionFloat),
+            ("testDataExtensionUInt16", testDataExtensionUInt16),
+            ("testDataExtensionUInt32", testDataExtensionUInt32),
             ("testDataDecode", testDataDecode),
             ("testSimpleDecodes", testSimpleDecodes),
             ("testUInt24", testUInt24),
@@ -26,6 +36,27 @@ extension Data {
 
 // MARK: Zero Copy
 extension DataDecoderTests {
+    
+    func testDataExtensionDouble()  {
+        let value: Double = 1.56
+        XCTAssertEqual(Data(from: value).to(type: Double.self), value)
+    }
+
+    func testDataExtensionFloat()  {
+        let value: Float = 2.5585
+        XCTAssertEqual(Data(from: value).to(type: Float.self), value)
+    }
+
+    func testDataExtensionUInt16()  {
+        XCTAssertEqual(beefData.to(type: UInt16.self), BEEF)
+    }
+
+    func testDataExtensionUInt32()  {
+        XCTAssertEqual(deadBeefData.to(type: UInt32.self), DEADBEEF)
+        
+        XCTAssertEqual(deadBeefData.scanValue(start: 0, type: UInt16.self), BEEF)
+        XCTAssertEqual(deadBeefData.scanValue(start: 2, type: UInt16.self), DEAD)
+    }
 
     func testDataDecode()  {
         let ipData: Data = Data([0x02, 0xFE, 0xFF, 0xEF, 0xBE, 0xAD, 0xDE, 0xA5])

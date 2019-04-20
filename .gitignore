@@ -101,6 +101,7 @@ fastlane/test_output
 Packages
 .build
 xcuserdata
+*.xcscheme
 *.xcodeproj
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj

@@ -65,8 +65,8 @@ extension MACAddress: Equatable {
 
 extension MACAddress: Hashable {
 
-    public var hashValue: Int {
-        return stringValue.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(stringValue)
     }
 }
 

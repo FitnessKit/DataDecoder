@@ -1,7 +1,8 @@
 # DataDecoder
 Swift Data Decoder.  Easily Decode Data values
 
-[![Swift4](https://img.shields.io/badge/swift4-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift5](https://img.shields.io/badge/swift5-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/swift)
+[![CI Status](http://img.shields.io/travis/FitnessKit/DataDecoder.svg?style=flat)](https://travis-ci.org/FitnessKit/DataDecoder)
 [![Version](https://img.shields.io/cocoapods/v/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
 [![License](https://img.shields.io/cocoapods/l/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
 [![Platform](https://img.shields.io/cocoapods/p/DataDecoder.svg?style=flat)](http://cocoapods.org/pods/DataDecoder)
@@ -18,12 +19,19 @@ pod "DataDecoder"
 
 Swift Package Manager:
 
+```swift
+    dependencies: [
+        .package(url: "https://github.com/FitnessKit/DataDecoder", from: "5.0.0"),
+    ]
+```
+
 Swift4
 ```swift
     dependencies: [
-        .package(url: "https://github.com/FitnessKit/DataDecoder", from: "4.4.0"),
+        .package(url: "https://github.com/FitnessKit/DataDecoder", .branch("swift42")),
     ]
 ```
+
 
 ## How to Use ##
 

@@ -16,13 +16,13 @@
     <header>
       <div class="content-wrapper">
         <p>
-          <a href="../index.html">DataDecoder Docs</a>
+          <a href="../index.html">DataDecoder 5.0.0 Docs</a>
           <span class="no-mobile"> (72% documented)</span>
         </p>
     
         <p class="header-right">
           <a href="https://github.com/FitnessKit/DataDecoder">
-            <img src="../img/gh.png"/>
+            <img src="../img/gh.png" alt="GitHub"/>
             <span class="no-mobile">View on GitHub</span>
           </a>
         </p>
@@ -33,10 +33,12 @@
       <div class="content-wrapper">
         <p id="breadcrumbs">
           <span class="no-mobile">
-            <a href="../index.html">DataDecoder Reference</a>
-            <img id="carat" src="../img/carat.png" />
+            <a href="../index.html">DataDecoder</a>
+            <img id="carat" src="../img/carat.png" alt=""/>
+            <a href="../Structs.html">Structures</a>
+            <img id="carat" src="../img/carat.png" alt=""/>
+            MACAddress Structure Reference
           </span>
-          MACAddress Structure Reference
         </p>
       </div>
     </div>
@@ -48,7 +50,10 @@
               <h1>MACAddress</h1>
                 <div class="declaration">
                   <div class="language">
+                    
                     <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MACAddress</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MACAddress</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MACAddress</span><span class="p">:</span> <span class="kt">Hashable</span></code></pre>
 
                   </div>
                 </div>
@@ -78,7 +83,7 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">stringValue</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                            <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">stringValue</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                           </div>
                         </div>
@@ -117,7 +122,7 @@
                       <code>
                       <a name="/s:11DataDecoder10MACAddressV6stringACSS_tcfc"></a>
                       <a name="//apple_ref/swift/Method/init(string:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:11DataDecoder10MACAddressV6stringACSS_tcfc">init(string:)</a>
+                      <a class="token" href="#/s:11DataDecoder10MACAddressV6stringACSS_tcfc">init(string:<wbr>)</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -144,7 +149,7 @@
                       <code>
                       <a name="/s:11DataDecoder10MACAddressV4dataAC10Foundation0A0V_tcfc"></a>
                       <a name="//apple_ref/swift/Method/init(data:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:11DataDecoder10MACAddressV4dataAC10Foundation0A0V_tcfc">init(data:)</a>
+                      <a class="token" href="#/s:11DataDecoder10MACAddressV4dataAC10Foundation0A0V_tcfc">init(data:<wbr>)</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -166,16 +171,12 @@
                       </section>
                     </div>
                   </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <ul>
                   <li class="item">
                     <div>
                       <code>
                       <a name="/s:SQ2eeoiySbx_xtFZ"></a>
                       <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:SQ2eeoiySbx_xtFZ">==(_:_:)</a>
+                      <a class="token" href="#/s:SQ2eeoiySbx_xtFZ">==(_:<wbr>_:<wbr>)</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -196,16 +197,12 @@
                       </section>
                     </div>
                   </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <ul>
                   <li class="item">
                     <div>
                       <code>
                       <a name="/s:SH4hash4intoys6HasherVz_tF"></a>
                       <a name="//apple_ref/swift/Method/hash(into:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:SH4hash4intoys6HasherVz_tF">hash(into:)</a>
+                      <a class="token" href="#/s:SH4hash4intoys6HasherVz_tF">hash(into:<wbr>)</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -266,10 +263,9 @@
       <div class="footer-wrapper">
         <section id="footer">
           <p>© 2017 Kevin A. Hoogheem</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </div>
     </div>
   </body>
-</div>
 </html>
